@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latihan Deskripsi dan Tubuh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one centered card on a deep green field, gold accents, answer buttons stacked on phones. */
+:root{
+  --green:#0f3d2a; --green-2:#165138; --gold:#f2c651; --cream:#fbf6e6; --ink:#10261b;
+  --ok:#2e9e4f; --no:#d63a3a;
+  --ar:'Noto Naskh Arabic','Amiri','Traditional Arabic',serif;
+  --ui:'Nunito',system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--green);color:var(--cream);font-family:var(--ui)}
+body{display:flex;justify-content:center;padding:20px 16px 40px}
+main{width:100%;max-width:760px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:.02em;color:var(--gold)}
+.score{font-weight:800;font-variant-numeric:tabular-nums}
+.bar{height:10px;border-radius:99px;background:var(--green-2);overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s}
+.card{background:var(--cream);color:var(--ink);border-radius:22px;padding:22px 18px;border:4px solid var(--gold)}
+.kind{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green-2);margin:0 0 10px}
+.q{display:flex;align-items:center;gap:14px;justify-content:center;margin:6px 0 4px}
+.ar{font-family:var(--ar);font-weight:700;direction:rtl;line-height:1.5}
+.q .ar{font-size:clamp(2.1rem,8vw,3.4rem);text-align:center}
+.hint{text-align:center;font-weight:800;font-size:1.1rem;margin:0 0 18px;color:var(--green-2)}
+.snd{flex:none;width:56px;height:56px;border-radius:50%;border:0;background:var(--green);color:var(--gold);font-size:1.5rem;cursor:pointer}
+.snd:focus-visible,.opt:focus-visible,.next:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{position:relative;border:4px solid var(--green);background:var(--gold);color:var(--ink);border-radius:18px;padding:14px 10px;cursor:pointer;min-height:84px;display:flex;align-items:center;justify-content:center}
+.opt .ar{font-size:1.9rem;text-align:center}
+.opt.lat{font-weight:800;font-size:1.15rem;text-align:center}
+.opt:hover:not(:disabled){transform:translateY(-2px)}
+.opt:disabled{cursor:default}
+.badge{position:absolute;top:-16px;inset-inline-end:-10px;width:44px;height:44px;border-radius:50%;border:3px solid #fff;color:#fff;font-size:1.4rem;font-weight:800;display:none;align-items:center;justify-content:center}
+.opt.ok .badge{display:flex;background:var(--ok)}
+.opt.no .badge{display:flex;background:var(--no)}
+.opt.reveal{border-color:var(--ok)}
+.fb{text-align:center;font-weight:800}
+.next{display:none;margin:14px auto 0;border:0;border-radius:99px;background:var(--green);color:var(--gold);font:800 1.05rem var(--ui);padding:12px 28px;cursor:pointer}
+.end{text-align:center}
+.end h2{margin:6px 0;font-size:1.6rem}
+.end .big{font-size:3rem;font-weight:800;font-variant-numeric:tabular-nums}
+.chk{display:flex;gap:8px;justify-content:center;align-items:center;font-weight:800;margin:10px 0 4px}
+.fb{min-height:1.6em;margin:16px 0 0}
+.expl{margin-top:8px;font-weight:600;background:#fff;border-radius:14px;padding:10px 12px;border:2px solid var(--gold)}
+.expl .ar{font-size:1.6rem}
+.mini{border:0;border-radius:50%;width:34px;height:34px;background:var(--green);color:var(--gold);cursor:pointer;margin-inline-start:6px}
+.rev{list-style:none;padding:0;margin:0 0 6px;text-align:start;display:grid;gap:6px}
+.rev .ar{font-size:1.4rem}
+.note{font-size:.85rem;opacity:.8;text-align:center;margin-top:16px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <header><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <section class="card" id="card" aria-live="polite"></section>
+  <p class="note">Tombol 🔊 membaca kalimat memakai suara perangkat; jika tidak ada suara Arab, tombol tidak berbunyi.</p>
+</main>
+<script>
+// Each item: kind, ar (shown big), hint (Indonesian prompt), opts, ans (index of correct), arOpts (options in Arabic), full (correct sentence in Arabic), id (Indonesian meaning)
+var T={fill:"Lengkapi kalimat · أكمل الفراغ",mean:"Pilih arti · اختر المعنى",tr:"Pilih terjemahan · اختر الترجمة",gr:"Kalimat yang benar · الجملة الصحيحة",dl:"Jawab dialog · رد الحوار"};
+var DATA=[
+ {n:521,kind:T.fill,ar:"هُوَ ـــــ.",hint:"Dia (laki-laki) tinggi.",opts:["طَوِيلٌ","قَصِيرَةٌ","جَمِيلَةٌ"],ans:0,arOpts:true,full:"هُوَ طَوِيلٌ.",id:"Dia (laki-laki) tinggi."},
+ {n:522,kind:T.tr,ar:"",hint:"Dia (perempuan) pendek.",opts:["هِيَ قَصِيرَةٌ","هُوَ قَصِيرَةٌ","هِيَ طَوِيلٌ"],ans:0,arOpts:true,full:"هِيَ قَصِيرَةٌ.",id:"Dia (perempuan) pendek."},
+ {n:523,kind:T.mean,ar:"أَخِي نَحِيفٌ.",hint:"Apa artinya?",opts:["Saudara laki-laki saya kurus.","Saudara laki-laki saya tinggi.","Ayah saya kurus."],ans:0,arOpts:false,full:"أَخِي نَحِيفٌ.",id:"Saudara laki-laki saya kurus."},
+ {n:524,kind:T.gr,ar:"",hint:"Dia (laki-laki) kuat.",opts:["هُوَ قَوِيٌّ","هُوَ قَوِيَّةٌ","هِيَ قَوِيٌّ"],ans:0,arOpts:true,full:"هُوَ قَوِيٌّ.",id:"Dia kuat."},
+ {n:525,kind:T.fill,ar:"هِيَ ـــــ.",hint:"Dia (perempuan) cantik.",opts:["جَمِيلَةٌ","جَمِيلٌ","قَصِيرٌ"],ans:0,arOpts:true,full:"هِيَ جَمِيلَةٌ.",id:"Dia (perempuan) cantik."},
+ {n:526,kind:T.mean,ar:"أَبِي كَبِيرٌ فِي السِّنِّ.",hint:"Apa artinya?",opts:["Ayah saya sudah tua.","Ayah saya masih muda.","Guru saya sudah tua."],ans:0,arOpts:false,full:"أَبِي كَبِيرٌ فِي السِّنِّ.",id:"Ayah saya sudah tua."},
+ {n:527,kind:T.dl,ar:"كَمْ عُمْرُهُ؟",hint:"Berapa umurnya? Pilih jawaban yang cocok.",opts:["هُوَ شَابٌّ","هُوَ طَوِيلٌ","هَذَا رَأْسِي"],ans:0,arOpts:true,full:"هُوَ شَابٌّ.",id:"Dia masih muda."},
+ {n:528,kind:T.tr,ar:"",hint:"Dia (perempuan) baik dan ramah.",opts:["هِيَ طَيِّبَةٌ وَلَطِيفَةٌ","هُوَ طَيِّبٌ وَلَطِيفٌ","هِيَ كَسُولَةٌ"],ans:0,arOpts:true,full:"هِيَ طَيِّبَةٌ وَلَطِيفَةٌ.",id:"Dia (perempuan) baik dan ramah."},
+ {n:529,kind:T.mean,ar:"مُعَلِّمِي صَبُورٌ.",hint:"Apa artinya?",opts:["Guru saya sabar.","Guru saya rajin.","Teman saya sabar."],ans:0,arOpts:false,full:"مُعَلِّمِي صَبُورٌ.",id:"Guru saya sabar."},
+ {n:530,kind:T.fill,ar:"صَدِيقِي ـــــ.",hint:"Teman saya pintar.",opts:["ذَكِيٌّ","كَسُولٌ","نَحِيفَةٌ"],ans:0,arOpts:true,full:"صَدِيقِي ذَكِيٌّ.",id:"Teman saya pintar."},
+ {n:531,kind:T.mean,ar:"هُوَ كَسُولٌ.",hint:"Apa artinya?",opts:["Dia malas.","Dia rajin.","Dia kuat."],ans:0,arOpts:false,full:"هُوَ كَسُولٌ.",id:"Dia malas."},
+ {n:532,kind:T.tr,ar:"",hint:"Dia rajin.",opts:["هُوَ مُجْتَهِدٌ","هُوَ كَسُولٌ","هُوَ شَابٌّ"],ans:0,arOpts:true,full:"هُوَ مُجْتَهِدٌ.",id:"Dia rajin."},
+ {n:533,kind:T.mean,ar:"شَعْرُهَا طَوِيلٌ.",hint:"Apa artinya?",opts:["Rambutnya panjang.","Rambutnya pendek.","Matanya indah."],ans:0,arOpts:false,full:"شَعْرُهَا طَوِيلٌ.",id:"Rambutnya panjang."},
+ {n:534,kind:T.tr,ar:"",hint:"Matamu indah (untuk perempuan).",opts:["عَيْنَاكِ جَمِيلَتَانِ","شَعْرُكِ طَوِيلٌ","عَيْنَاهُ جَمِيلَتَانِ"],ans:0,arOpts:true,full:"عَيْنَاكِ جَمِيلَتَانِ.",id:"Matamu indah (untuk perempuan)."},
+ {n:535,kind:T.mean,ar:"كَيْفَ هُوَ؟",hint:"Apa artinya?",opts:["Bagaimana dia?","Siapa dia?","Apa ini?"],ans:0,arOpts:false,full:"كَيْفَ هُوَ؟",id:"Bagaimana dia?"},
+ {n:536,kind:T.dl,ar:"مَا هَذَا؟",hint:"Kamu menunjuk kepalamu. Pilih jawabannya.",opts:["هَذَا رَأْسِي","هَذِهِ يَدِي","هَذِهِ رِجْلِي"],ans:0,arOpts:true,full:"هَذَا رَأْسِي.",id:"Ini kepala saya."},
+ {n:537,kind:T.fill,ar:"هَذِهِ ـــــ.",hint:"Ini tangan saya.",opts:["يَدِي","رَأْسِي","أَخِي"],ans:0,arOpts:true,full:"هَذِهِ يَدِي.",id:"Ini tangan saya."},
+ {n:538,kind:T.mean,ar:"هَذِهِ رِجْلِي.",hint:"Apa artinya?",opts:["Ini kaki saya.","Ini tangan saya.","Ini kepala saya."],ans:0,arOpts:false,full:"هَذِهِ رِجْلِي.",id:"Ini kaki saya."}
+];
+var card=document.getElementById('card'), shuffleQ=true;
+var list, i, score, answered, wrong;
+function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t}return a}
+function speak(t){
+  try{
+    if(!window.speechSynthesis||!t)return;
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function setBar(v){document.getElementById('bar').style.width=(v/list.length*100)+'%'}
+function home(){
+  list=DATA;i=0;score=0;
+  document.getElementById('score').textContent='';
+  document.getElementById('bar').style.width='0';
+  card.innerHTML='<div class="end"><p class="kind">Selamat datang · أهلًا بك</p><h2>Latihan: Deskripsi Orang dan Tubuh</h2><p class="hint" style="margin-bottom:6px">وصف الأشخاص والجسم · 18 soal, satu soal untuk setiap kalimat.</p><label class="chk"><input type="checkbox" id="rnd" checked> Acak urutan soal</label><button class="next" id="go" style="display:block">Mulai · ابدأ</button></div>';
+  document.getElementById('go').onclick=function(){shuffleQ=document.getElementById('rnd').checked;begin(DATA)};
+}
+function begin(items){list=shuffleQ?shuffle(items):items.slice();i=0;score=0;wrong=[];show()}
+function show(){
+  answered=false;
+  var q=list[i];
+  var idx=shuffle(q.opts.map(function(_,k){return k}));
+  var h='<p class="kind">'+q.kind+' · '+(i+1)+'/'+list.length+'</p>';
+  if(q.ar){h+='<div class="q"><button class="snd" id="snd" aria-label="Putar suara">🔊</button><span class="ar">'+q.ar+'</span></div>'}
+  h+='<p class="hint">'+q.hint+'</p><div class="opts">';
+  idx.forEach(function(k){
+    h+='<button class="opt'+(q.arOpts?'':' lat')+'" data-k="'+k+'"><span class="'+(q.arOpts?'ar':'')+'">'+q.opts[k]+'</span><span class="badge" aria-hidden="true"></span></button>';
+  });
+  h+='</div><div class="fb" id="fb"></div><button class="next" id="next">Lanjut ←</button>';
+  card.innerHTML=h;
+  var s=document.getElementById('snd');if(s)s.onclick=function(){speak(q.full.replace(/ـ+/g,''))};
+  Array.prototype.forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){pick(b,q)}});
+  document.getElementById('next').onclick=function(){i++;i<list.length?show():finish()};
+  setBar(i);
+  document.getElementById('score').textContent=score+' / '+i;
+}
+function pick(b,q){
+  if(answered)return;answered=true;
+  var k=+b.getAttribute('data-k'),right=(k===q.ans);
+  Array.prototype.forEach.call(card.querySelectorAll('.opt'),function(o){o.disabled=true;
+    if(+o.getAttribute('data-k')===q.ans&&!right)o.classList.add('reveal')});
+  b.classList.add(right?'ok':'no');
+  b.querySelector('.badge').textContent=right?'✓':'✕';
+  if(right)score++;else wrong.push(q);
+  var fb=document.getElementById('fb');
+  fb.innerHTML='<div style="color:'+(right?'#1f7a3c':'#b02a2a')+'">'+(right?'Benar! أحسنت':'Belum tepat. Jawaban benar ditandai hijau.')+'</div>'+
+    '<div class="expl"><span class="ar">'+q.full+'</span><br>'+q.id+' <button class="mini" id="snd2" aria-label="Putar suara">🔊</button></div>';
+  document.getElementById('snd2').onclick=function(){speak(q.full)};
+  document.getElementById('score').textContent=score+' / '+(i+1);
+  setBar(i+1);
+  var n=document.getElementById('next');n.style.display='block';
+  n.textContent=(i+1<list.length)?'Lanjut ←':'Lihat hasil';
+  n.focus();
+}
+function finish(){
+  var pct=Math.round(score/list.length*100);
+  var h='<div class="end"><p class="kind">Hasil · النتيجة</p><div class="big">'+score+' / '+list.length+'</div><h2>'+(pct>=80?'Mumtaz! ممتاز':pct>=50?'Bagus, terus berlatih':'Ayo coba lagi')+'</h2>';
+  if(wrong.length){
+    h+='<p class="hint" style="margin:10px 0 6px">Perlu diulang:</p><ul class="rev">';
+    wrong.forEach(function(q){h+='<li><span class="ar">'+q.full+'</span> — '+q.id+'</li>'});
+    h+='</ul><button class="next" id="redo" style="display:block">Ulangi yang salah · أعد الأخطاء</button>';
+  }
+  h+='<button class="next" id="again" style="display:block">Mulai dari awal · من البداية</button></div>';
+  card.innerHTML=h;
+  var r=document.getElementById('redo');if(r)r.onclick=function(){begin(wrong.slice())};
+  document.getElementById('again').onclick=home;
+  document.getElementById('bar').style.width='100%';
+}
+home();
+</script>
+</body>
+</html>
