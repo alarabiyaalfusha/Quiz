@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار تفاعلي</title>
+<style>
+  body { font-family: Tahoma, Arial, sans-serif; background:#f2f5f9; margin:0; padding:20px; }
+  .box { max-width:600px; margin:auto; background:#fff; border-radius:12px; padding:24px; box-shadow:0 2px 10px rgba(0,0,0,.08); }
+  h1 { text-align:center; color:#2c3e50; font-size:24px; }
+  .q { font-size:20px; margin:20px 0; }
+  .opt { display:block; width:100%; margin:8px 0; padding:12px; font-size:17px; border:2px solid #ddd; border-radius:8px; background:#fafafa; cursor:pointer; text-align:right; }
+  .opt:hover { background:#eef3ff; }
+  .correct { background:#d4edda !important; border-color:#28a745; }
+  .wrong { background:#f8d7da !important; border-color:#dc3545; }
+  #next { margin-top:16px; padding:10px 24px; font-size:17px; border:none; border-radius:8px; background:#3b6fd8; color:#fff; cursor:pointer; display:none; }
+  #progress { color:#888; text-align:center; }
+  #result { text-align:center; font-size:22px; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>اختبار تفاعلي</h1>
+  <div id="progress"></div>
+  <div id="quiz">
+    <div class="q" id="question"></div>
+    <div id="options"></div>
+    <button id="next">التالي</button>
+  </div>
+  <div id="result"></div>
+</div>
+
+<script>
+// ✏️ عدّل الأسئلة هنا: answer = رقم الإجابة الصحيحة (يبدأ من 0)
+const questions = [
+  { q: "ما عاصمة المملكة العربية السعودية؟", options: ["جدة", "الرياض", "مكة", "الدمام"], answer: 1 },
+  { q: "كم عدد أيام الأسبوع؟", options: ["5", "6", "7", "8"], answer: 2 },
+  { q: "ما أكبر كوكب في المجموعة الشمسية؟", options: ["الأرض", "المريخ", "زحل", "المشتري"], answer: 3 }
+];
+
+let current = 0, score = 0;
+const qEl = document.getElementById("question");
+const optsEl = document.getElementById("options");
+const nextBtn = document.getElementById("next");
+
+function show() {
+  const item = questions[current];
+  document.getElementById("progress").textContent = `السؤال ${current + 1} من ${questions.length}`;
+  qEl.textContent = item.q;
+  optsEl.innerHTML = "";
+  nextBtn.style.display = "none";
+  item.options.forEach((text, i) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.textContent = text;
+    b.onclick = () => choose(i, b);
+    optsEl.appendChild(b);
+  });
+}
+
+function choose(i, btn) {
+  const item = questions[current];
+  const all = optsEl.querySelectorAll(".opt");
+  all.forEach(b => b.disabled = true);
+  if (i === item.answer) { btn.classList.add("correct"); score++; }
+  else { btn.classList.add("wrong"); all[item.answer].classList.add("correct"); }
+  nextBtn.style.display = "inline-block";
+}
+
+nextBtn.onclick = () => {
+  current++;
+  if (current < questions.length) show();
+  else {
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("progress").textContent = "";
+    document.getElementById("result").innerHTML =
+      `انتهى الاختبار 🎉<br>نتيجتك: ${score} من ${questions.length}<br><br>
+       <button class="opt" style="text-align:center" onclick="location.reload()">إعادة الاختبار</button>`;
+  }
+};
+
+show();
+</script>
+</body>
+</html>
