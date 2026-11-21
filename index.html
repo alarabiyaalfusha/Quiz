@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3000 Kalimat Bahasa Arab Populer · A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#165138;--gd:#052b18;--gold:#f2c651;--cream:#fff8e6;--lock:#6f8478}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#0b2a1c;overflow:hidden;font-family:'Poppins',system-ui,sans-serif}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center;overflow:hidden;
+ background:linear-gradient(#a9d8ec 0%,#d4ecf0 38%,#f7ecc8 70%,#e6d49a 100%)}
+#bg{position:absolute;inset:0}
+.abs{position:absolute}
+.ar{font-family:'Amiri','Noto Naskh Arabic','Traditional Arabic',serif;direction:rtl}
+a{text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none}
+/* header */
+.pill{position:absolute;left:68px;top:37px;width:549px;height:106px;border-radius:53px;background:linear-gradient(#fffdf4,#f4ead0);border:5px solid var(--gold);box-shadow:0 6px 0 rgba(5,43,24,.25);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:52px;color:var(--g);letter-spacing:1px;text-align:center;line-height:1;flex-direction:column;gap:4px}
+.pill small{display:block;font-size:24px;font-weight:600}
+.banner{position:absolute;left:560px;top:0;width:800px;height:170px;background:linear-gradient(var(--g),var(--gd));border:5px solid var(--gold);border-top:0;border-radius:0 0 90px 90px;box-shadow:0 8px 0 rgba(5,43,24,.3);text-align:center;color:#fff}
+.banner .t1{font-family:'Amiri',serif;font-weight:700;font-size:62px;margin-top:20px;line-height:1.15}
+.banner .t2{font-weight:600;font-size:26px;letter-spacing:3px;margin-top:2px}
+.logo{position:absolute;left:34px;top:22px;width:100px;height:100px;border-radius:50%;border:5px solid var(--gold);background:radial-gradient(#1d6a49,#0b3a26)}
+.logo svg{width:100%;height:100%}
+.badge{position:absolute;left:1650px;top:20px;width:190px;text-align:center}
+.badge .c{width:190px;height:150px;border-radius:50%;background:radial-gradient(#1d6a49,var(--gd));border:6px solid var(--gold);color:#fff;font-weight:700;font-size:86px;display:flex;align-items:center;justify-content:center;padding-bottom:26px}
+.badge .p{margin:-42px auto 0;width:170px;border-radius:30px;background:var(--gold);color:var(--gd);font-weight:700;font-size:34px;padding:2px 0;position:relative;border:4px solid #fff8}
+.ribbon{position:absolute;left:612px;top:176px;width:696px;height:70px;border-radius:12px;background:linear-gradient(var(--gold),#d9a93a);border:4px solid #fff4c8;color:var(--g);font-weight:700;font-size:30px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(5,43,24,.25)}
+/* nav */
+.nbtn{position:absolute;top:928px;height:92px;border-radius:46px;background:linear-gradient(var(--g),var(--gd));border:5px solid var(--gold);color:#fff;font-weight:700;font-size:32px;display:flex;align-items:center;gap:16px;padding:0 26px;box-shadow:0 6px 0 rgba(5,43,24,.35)}
+.nbtn:active{transform:translateY(3px)}
+.nbtn i{width:64px;height:64px;border-radius:50%;background:#fff;color:var(--g);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:40px;line-height:1}
+.nbtn[disabled]{opacity:.35;pointer-events:none}
+#prog{position:absolute;left:470px;top:984px;width:980px;height:18px;border-radius:9px;background:rgba(5,43,24,.35);border:3px solid var(--gold);overflow:hidden}
+#prog b{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+#cnt{position:absolute;left:470px;top:943px;width:980px;text-align:center;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);font-weight:700;font-size:28px}
+/* tools */
+#tools{position:absolute;left:1560px;top:268px;width:320px;display:flex;flex-direction:column;gap:14px;z-index:5}
+.tool{background:rgba(255,248,230,.95);border:4px solid var(--gold);border-radius:24px;padding:10px 14px;color:var(--g);font-weight:700;font-size:24px;text-align:center}
+.tool .row{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.tool .row button{flex:1;border-radius:14px;border:3px solid var(--g);padding:6px 0;font-size:22px;font-weight:700;color:var(--g);background:#fff}
+.tool .row button.on{background:var(--g);color:#fff}
+/* content */
+.card{position:absolute;left:240px;top:268px;width:1290px;height:640px;border-radius:48px;background:linear-gradient(#fffdf4,#fbf1d4);border:6px solid var(--gold);box-shadow:0 10px 0 rgba(5,43,24,.28),0 0 0 14px rgba(22,81,56,.9)}
+.numb{position:absolute;left:-60px;top:-50px;width:112px;height:112px;border-radius:50%;background:var(--gold);color:var(--g);border:6px solid var(--g);font-weight:700;font-size:44px;display:flex;align-items:center;justify-content:center}
+.spk{width:96px;height:96px;border-radius:50%;background:linear-gradient(var(--g),var(--gd));border:5px solid var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(5,43,24,.35);flex:none}
+.spk svg{width:54px;height:54px}
+.spk.play{background:var(--gold);animation:pulse .8s infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.lab{display:inline-block;background:var(--g);color:#fff;border-radius:24px;padding:4px 30px;font-weight:700;font-size:28px}
+.mean{position:absolute;left:40px;right:40px;bottom:36px;height:112px;border-radius:56px;background:linear-gradient(var(--g),var(--gd));border:5px solid var(--gold);color:#fff;font-weight:600;font-size:46px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 40px;line-height:1.1}
+.tr{color:#9a6b00;font-size:36px;font-weight:600;font-style:italic;text-align:center;line-height:1.2}
+.cols{position:absolute;left:30px;right:30px;top:36px;bottom:170px;display:flex;gap:30px}
+.col{flex:1;border-radius:36px;background:#fff;border:4px dashed var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+.col .ar{font-size:92px;font-weight:700;color:var(--gd);line-height:1.35;text-align:center}
+.one .ar{font-size:128px}
+/* dialog */
+.bub{position:absolute;width:1060px;border-radius:44px;padding:26px 36px;display:flex;align-items:center;gap:26px;border:5px solid var(--gold);box-shadow:0 8px 0 rgba(5,43,24,.28)}
+.bub.a{left:48px;top:26px;background:linear-gradient(var(--g),var(--gd));color:#fff}
+.bub.b{right:48px;top:262px;background:linear-gradient(#fffdf4,#f6e7ba);color:var(--gd)}
+.bub .who{width:84px;height:84px;border-radius:50%;background:var(--gold);color:var(--g);font-weight:700;font-size:52px;display:flex;align-items:center;justify-content:center;flex:none;border:4px solid #fff}
+.bub .ar{font-size:70px;font-weight:700;line-height:1.35;flex:1;text-align:right}
+.bub .idn{font-size:32px;font-weight:600;opacity:.95;margin-top:4px;direction:ltr;text-align:left}
+.bub .txt{flex:1}
+.pdlg{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);background:var(--gold);color:var(--g);font-weight:700;font-size:38px;border-radius:50px;padding:16px 56px;border:5px solid var(--g);box-shadow:0 6px 0 rgba(5,43,24,.35)}
+/* cover */
+.cover{position:absolute;left:240px;top:290px;width:1290px;height:600px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border-radius:48px;background:linear-gradient(#fffdf4,#fbf1d4);border:6px solid var(--gold);box-shadow:0 10px 0 rgba(5,43,24,.28),0 0 0 14px rgba(22,81,56,.9)}
+.cover .ar{font-size:120px;font-weight:700;color:var(--gd)}
+.cover .id{font-size:56px;font-weight:700;color:var(--g)}
+.cover .meta{font-size:34px;font-weight:600;color:#9a6b00}
+.go{margin-top:12px;background:var(--gold);color:var(--g);font-weight:700;font-size:40px;border-radius:50px;padding:14px 64px;border:5px solid var(--g);box-shadow:0 6px 0 rgba(5,43,24,.35)}
+/* grids */
+.grid{position:absolute;left:104px;top:262px;width:1712px}
+.gi{position:absolute;width:410px;height:70px;border-radius:35px;background:var(--lock);border:3px solid #cdbf8a;color:#eef1ee;display:flex;align-items:center;cursor:default;text-decoration:none}
+.gi.on{background:var(--g);border:5px solid var(--gold);color:#fff;cursor:pointer;box-shadow:0 5px 0 rgba(5,43,24,.3)}
+.gi.on:hover{filter:brightness(1.15)}
+.gi .no{position:absolute;left:14px;top:13px;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--g);font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center}
+.gi svg.lk{position:absolute;left:16px;top:15px;width:40px;height:40px}
+.gi .tx{position:absolute;left:68px;width:332px;top:3px;line-height:1.1}
+.gi .ta{font-family:'Amiri',serif;direction:rtl;text-align:right;font-weight:700;font-size:25px;white-space:nowrap;overflow:hidden}
+.gi .ti{font-size:16.5px;font-weight:700;margin-top:3px;color:#dfe6e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gi.on .ti{color:var(--gold)}
+/* hub */
+.hcard{position:absolute;top:330px;width:620px;height:520px;border-radius:56px;background:linear-gradient(#fffdf4,#f6e7ba);border:7px solid var(--gold);box-shadow:0 12px 0 rgba(5,43,24,.3),0 0 0 14px rgba(22,81,56,.92);text-align:center;color:var(--g);transition:transform .15s}
+.hcard:hover{transform:translateY(-8px)}
+.hcard .ic{margin:44px auto 10px;width:190px;height:190px;border-radius:50%;background:radial-gradient(#1d6a49,var(--gd));border:7px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.hcard .ic svg{width:110px;height:110px}
+.hcard .a{font-family:'Amiri',serif;font-size:90px;font-weight:700;line-height:1.2}
+.hcard .i{font-weight:700;font-size:46px;letter-spacing:2px}
+.hcard .s{font-weight:600;font-size:28px;color:#9a6b00;margin-top:6px}
+#hint{position:absolute;left:0;right:0;top:930px;text-align:center;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);font-weight:600;font-size:30px}
+#warn{position:absolute;left:240px;top:912px;width:1290px;text-align:center;color:#8a2b00;font-weight:700;font-size:24px;z-index:6}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+<svg id="bg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+ <defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fae6b"/><stop offset="1" stop-color="#3f7d4c"/></linearGradient>
+ <linearGradient id="mq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#eadbb2"/></linearGradient></defs>
+ <g opacity=".85">
+  <circle cx="330" cy="150" r="70" fill="#fff" opacity=".5"/><ellipse cx="1500" cy="330" rx="150" ry="36" fill="#fff" opacity=".55"/><ellipse cx="460" cy="400" rx="120" ry="28" fill="#fff" opacity=".5"/>
+ </g>
+ <g fill="url(#mq)" stroke="#d8c58a" stroke-width="3">
+  <!-- left mosque -->
+  <rect x="120" y="500" width="30" height="480"/><path d="M114 500h42l-21-70z"/><rect x="108" y="560" width="54" height="10" fill="#d8c58a"/>
+  <rect x="300" y="540" width="420" height="440"/><path d="M360 540a150 150 0 0 1 300 0z"/><rect x="505" y="340" width="10" height="60" fill="#c9a93d"/><path d="M510 340a18 18 0 1 0 0 .1z" fill="#c9a93d"/>
+  <path d="M510 400 q-8 20 0 35 q8 -15 0 -35z" fill="#c9a93d"/>
+  <rect x="740" y="480" width="34" height="500"/><path d="M733 480h48l-24-80z"/><rect x="730" y="560" width="54" height="10" fill="#d8c58a"/>
+  <path d="M330 540a40 40 0 0 1 80 0z"/><path d="M610 540a40 40 0 0 1 80 0z"/>
+  <!-- right mosque -->
+  <rect x="1360" y="560" width="400" height="420"/><path d="M1420 560a140 140 0 0 1 280 0z"/><rect x="1555" y="380" width="10" height="50" fill="#c9a93d"/>
+  <rect x="1790" y="500" width="30" height="480"/><path d="M1784 500h42l-21-70z"/>
+  <rect x="1330" y="520" width="26" height="460"/><path d="M1325 520h36l-18-60z"/>
+ </g>
+ <g fill="#c9a93d" opacity=".55">
+  <rect x="330" y="640" width="30" height="80" rx="15"/><rect x="420" y="640" width="30" height="80" rx="15"/><rect x="570" y="640" width="30" height="80" rx="15"/><rect x="660" y="640" width="30" height="80" rx="15"/>
+  <rect x="1400" y="660" width="30" height="80" rx="15"/><rect x="1500" y="660" width="30" height="80" rx="15"/><rect x="1610" y="660" width="30" height="80" rx="15"/>
+ </g>
+ <rect y="900" width="1920" height="180" fill="url(#gr)" opacity=".92"/>
+ <g fill="#2f6a3d"><ellipse cx="60" cy="900" rx="110" ry="150"/><ellipse cx="1880" cy="880" rx="120" ry="170"/><ellipse cx="900" cy="960" rx="300" ry="60"/></g>
+ <rect y="900" width="1920" height="12" fill="#e9d79b" opacity=".8"/>
+</svg>
+<div id="ui"></div>
+<div id="warn"></div>
+</div></div>
+<script>
+const D={"topics": {"1": {"ar": "التحية والمناسبات والضيافة", "id": "Salam, Perayaan, dan Keramahan", "items": [{"n": "1", "v": [{"l": "", "ar": "السَّلَامُ عَلَيْكُمْ.", "tr": "As-salāmu ʿalaykum."}], "id": "Assalamu'alaikum.", "aid": "Assalamu'alaikum.", "aar": "السَّلَامُ عَلَيْكُمْ.", "bid": "Wa'alaikumussalam.", "bar": "وَعَلَيْكُمُ السَّلَامُ."}, {"n": "2", "v": [{"l": "", "ar": "وَعَلَيْكُمُ السَّلَامُ.", "tr": "Wa ʿalaykumu as-salāmu."}], "id": "Wa'alaikumussalam.", "aid": "Assalamu'alaikum.", "aar": "السَّلَامُ عَلَيْكُمْ.", "bid": "Wa'alaikumussalam.", "bar": "وَعَلَيْكُمُ السَّلَامُ."}, {"n": "3", "v": [{"l": "", "ar": "مَرْحَبًا.", "tr": "Marḥaban."}], "id": "Halo.", "aid": "Halo.", "aar": "مَرْحَبًا.", "bid": "Halo juga.", "bar": "أَهْلًا بِكَ."}, {"n": "4", "v": [{"l": "", "ar": "أَهْلًا وَسَهْلًا.", "tr": "Ahlan wa sahlan."}], "id": "Selamat datang.", "aid": "Selamat datang.", "aar": "أَهْلًا وَسَهْلًا.", "bid": "Terima kasih.", "bar": "شُكْرًا."}, {"n": "5", "v": [{"l": "", "ar": "صَبَاحُ الْخَيْرِ.", "tr": "Ṣabāḥu al-khayri."}], "id": "Selamat pagi.", "aid": "Selamat pagi.", "aar": "صَبَاحُ الْخَيْرِ.", "bid": "Selamat pagi juga.", "bar": "صَبَاحُ النُّورِ."}, {"n": "6", "v": [{"l": "", "ar": "صَبَاحُ النُّورِ.", "tr": "Ṣabāḥu an-nūri."}], "id": "Selamat pagi (balasan).", "aid": "Selamat pagi.", "aar": "صَبَاحُ الْخَيْرِ.", "bid": "Selamat pagi (balasan).", "bar": "صَبَاحُ النُّورِ."}, {"n": "7", "v": [{"l": "", "ar": "مَسَاءُ الْخَيْرِ.", "tr": "Masāʾu al-khayri."}], "id": "Selamat sore / selamat malam.", "aid": "Selamat sore / selamat malam.", "aar": "مَسَاءُ الْخَيْرِ.", "bid": "Selamat sore / malam juga.", "bar": "مَسَاءُ النُّورِ."}, {"n": "8", "v": [{"l": "", "ar": "مَسَاءُ النُّورِ.", "tr": "Masāʾu an-nūri."}], "id": "Selamat sore / malam (balasan).", "aid": "Selamat sore / malam.", "aar": "مَسَاءُ الْخَيْرِ.", "bid": "Selamat sore / malam (balasan).", "bar": "مَسَاءُ النُّورِ."}, {"n": "9", "v": [{"l": "Laki-laki", "ar": "تُصْبِحُ عَلَى خَيْرٍ.", "tr": "Tuṣbiḥu ʿalā khayrin."}, {"l": "Perempuan", "ar": "تُصْبِحِينَ عَلَى خَيْرٍ.", "tr": "Tuṣbiḥīna ʿalā khayrin."}], "id": "Selamat tidur.", "aid": "Selamat tidur.", "aar": "تُصْبِحُ عَلَى خَيْرٍ.", "bid": "Kamu juga, selamat tidur.", "bar": "وَأَنْتَ مِنْ أَهْلِ الْخَيْرِ."}, {"n": "10", "v": [{"l": "Laki-laki", "ar": "كَيْفَ حَالُكَ؟", "tr": "Kayfa ḥāluka?"}, {"l": "Perempuan", "ar": "كَيْفَ حَالُكِ؟", "tr": "Kayfa ḥāluki?"}], "id": "Apa kabar?", "aid": "Apa kabar?", "aar": "كَيْفَ حَالُكَ؟", "bid": "Saya baik, terima kasih.", "bar": "أَنَا بِخَيْرٍ، شُكْرًا."}, {"n": "11", "v": [{"l": "", "ar": "أَنَا بِخَيْرٍ، شُكْرًا.", "tr": "Anā bi-khayrin, shukran."}], "id": "Saya baik, terima kasih.", "aid": "Apa kabar?", "aar": "كَيْفَ حَالُكَ؟", "bid": "Saya baik, terima kasih.", "bar": "أَنَا بِخَيْرٍ، شُكْرًا."}, {"n": "12", "v": [{"l": "Laki-laki", "ar": "وَأَنْتَ؟", "tr": "Wa anta?"}, {"l": "Perempuan", "ar": "وَأَنْتِ؟", "tr": "Wa anti?"}], "id": "Dan kamu?", "aid": "Saya baik, dan kamu?", "aar": "أَنَا بِخَيْرٍ، وَأَنْتَ؟", "bid": "Baik, alhamdulillah.", "bar": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ."}, {"n": "13", "v": [{"l": "", "ar": "الْحَمْدُ لِلَّهِ.", "tr": "Al-ḥamdu lillāhi."}], "id": "Alhamdulillah.", "aid": "Apa kabar?", "aar": "كَيْفَ حَالُكَ؟", "bid": "Alhamdulillah.", "bar": "الْحَمْدُ لِلَّهِ."}, {"n": "251", "v": [{"l": "Laki-laki", "ar": "كَيْفَ أَصْبَحْتَ؟", "tr": "Kayfa aṣbaḥta?"}, {"l": "Perempuan", "ar": "كَيْفَ أَصْبَحْتِ؟", "tr": "Kayfa aṣbaḥti?"}], "id": "Bagaimana kabarmu pagi ini?", "aid": "Bagaimana kabarmu pagi ini?", "aar": "كَيْفَ أَصْبَحْتَ؟", "bid": "Pagi ini saya baik.", "bar": "أَصْبَحْتُ بِخَيْرٍ."}, {"n": "252", "v": [{"l": "", "ar": "كَيْفَ الْأَهْلُ؟", "tr": "Kayfa al-ahlu?"}], "id": "Apa kabar keluarga?", "aid": "Apa kabar keluarga?", "aar": "كَيْفَ الْأَهْلُ؟", "bid": "Semuanya baik.", "bar": "كُلُّهُمْ بِخَيْرٍ."}, {"n": "253", "v": [{"l": "", "ar": "مَا الْأَخْبَارُ؟", "tr": "Mā al-akhbāru?"}], "id": "Ada kabar apa?", "aid": "Ada kabar apa?", "aar": "مَا الْأَخْبَارُ؟", "bid": "Tidak ada yang baru.", "bar": "لَا جَدِيدَ."}, {"n": "254", "v": [{"l": "", "ar": "لَا جَدِيدَ.", "tr": "Lā jadīda."}], "id": "Tidak ada yang baru.", "aid": "Ada kabar apa?", "aar": "مَا الْأَخْبَارُ؟", "bid": "Tidak ada yang baru.", "bar": "لَا جَدِيدَ."}, {"n": "255", "v": [{"l": "Laki-laki", "ar": "اشْتَقْتُ إِلَيْكَ.", "tr": "Ishtaqtu ilayka."}, {"l": "Perempuan", "ar": "اشْتَقْتُ إِلَيْكِ.", "tr": "Ishtaqtu ilayki."}], "id": "Saya rindu padamu.", "aid": "Saya rindu padamu.", "aar": "اشْتَقْتُ إِلَيْكَ.", "bid": "Saya juga.", "bar": "وَأَنَا أَيْضًا."}, {"n": "256", "v": [{"l": "Laki-laki", "ar": "يَسْعَدُ صَبَاحُكَ.", "tr": "Yasʿadu ṣabāḥuka."}, {"l": "Perempuan", "ar": "يَسْعَدُ صَبَاحُكِ.", "tr": "Yasʿadu ṣabāḥuki."}], "id": "Semoga pagimu bahagia.", "aid": "Semoga pagimu bahagia.", "aar": "يَسْعَدُ صَبَاحُكَ.", "bid": "Pagimu juga.", "bar": "وَصَبَاحُكَ."}, {"n": "259", "v": [{"l": "", "ar": "كُلُّ عَامٍ وَأَنْتَ بِخَيْرٍ.", "tr": "Kullu ʿāmin wa anta bi-khayrin."}], "id": "Selamat (ucapan untuk hari raya / ulang tahun).", "aid": "Selamat (ucapan untuk hari raya / ulang tahun).", "aar": "كُلُّ عَامٍ وَأَنْتَ بِخَيْرٍ.", "bid": "Kamu juga.", "bar": "وَأَنْتَ بِخَيْرٍ."}, {"n": "260", "v": [{"l": "", "ar": "عِيدٌ مُبَارَكٌ.", "tr": "ʿĪdun mubārakun."}], "id": "Selamat hari raya.", "aid": "Selamat hari raya.", "aar": "عِيدٌ مُبَارَكٌ.", "bid": "Selamat hari raya juga.", "bar": "عِيدٌ سَعِيدٌ."}, {"n": "261", "v": [{"l": "", "ar": "مَرْحَبًا بِكَ فِي بَيْتِنَا.", "tr": "Marḥaban bika fī baytinā."}], "id": "Selamat datang di rumah kami.", "aid": "Selamat datang di rumah kami.", "aar": "مَرْحَبًا بِكَ فِي بَيْتِنَا.", "bid": "Terima kasih.", "bar": "شُكْرًا لَكَ."}, {"n": "262", "v": [{"l": "Laki-laki", "ar": "اجْلِسْ، مِنْ فَضْلِكَ.", "tr": "Ijlis, min faḍlika."}, {"l": "Perempuan", "ar": "اجْلِسِي، مِنْ فَضْلِكِ.", "tr": "Ijlisī, min faḍliki."}], "id": "Silakan duduk.", "aid": "Silakan duduk.", "aar": "اجْلِسْ، مِنْ فَضْلِكَ.", "bid": "Terima kasih.", "bar": "شُكْرًا."}, {"n": "658", "v": [{"l": "", "ar": "صَوْمًا مَقْبُولًا.", "tr": "Ṣawman maqbūlan."}], "id": "Semoga puasamu diterima.", "aid": "Semoga puasamu diterima.", "aar": "صَوْمًا مَقْبُولًا.", "bid": "Puasamu juga.", "bar": "وَصَوْمُكَ أَيْضًا."}, {"n": "659", "v": [{"l": "", "ar": "مَتَى الْإِفْطَارُ؟", "tr": "Matā al-ifṭāru?"}], "id": "Kapan waktu berbuka puasa?", "aid": "Kapan waktu berbuka puasa?", "aar": "مَتَى الْإِفْطَارُ؟", "bid": "Jam enam.", "bar": "فِي السَّاعَةِ السَّادِسَةِ."}]}, "2": {"ar": "التعارف", "id": "Perkenalan", "items": [{"n": "14", "v": [{"l": "Laki-laki", "ar": "مَا اسْمُكَ؟", "tr": "Mā ismuka?"}, {"l": "Perempuan", "ar": "مَا اسْمُكِ؟", "tr": "Mā ismuki?"}], "id": "Siapa namamu?", "aid": "Siapa namamu?", "aar": "مَا اسْمُكَ؟", "bid": "Nama saya Ahmad.", "bar": "اسْمِي أَحْمَدُ."}, {"n": "15", "v": [{"l": "", "ar": "اسْمِي أَحْمَدُ.", "tr": "Ismī Aḥmadu."}], "id": "Nama saya Ahmad.", "aid": "Siapa namamu?", "aar": "مَا اسْمُكَ؟", "bid": "Nama saya Ahmad.", "bar": "اسْمِي أَحْمَدُ."}, {"n": "16", "v": [{"l": "", "ar": "تَشَرَّفْنَا.", "tr": "Tasharrafnā."}], "id": "Senang berkenalan.", "aid": "Nama saya Sarah.", "aar": "اسْمِي سَارَةُ.", "bid": "Senang berkenalan.", "bar": "تَشَرَّفْنَا."}, {"n": "17", "v": [{"l": "", "ar": "فُرْصَةٌ سَعِيدَةٌ.", "tr": "Furṣatun saʿīdatun."}], "id": "Senang bertemu denganmu.", "aid": "Senang bertemu denganmu.", "aar": "فُرْصَةٌ سَعِيدَةٌ.", "bid": "Saya juga.", "bar": "وَأَنَا أَيْضًا."}, {"n": "18", "v": [{"l": "Laki-laki", "ar": "مِنْ أَيْنَ أَنْتَ؟", "tr": "Min ayna anta?"}, {"l": "Perempuan", "ar": "مِنْ أَيْنَ أَنْتِ؟", "tr": "Min ayna anti?"}], "id": "Kamu berasal dari mana?", "aid": "Kamu berasal dari mana?", "aar": "مِنْ أَيْنَ أَنْتَ؟", "bid": "Saya dari Indonesia.", "bar": "أَنَا مِنْ إِنْدُونِيسِيَا."}, {"n": "19", "v": [{"l": "", "ar": "أَنَا مِنْ إِنْدُونِيسِيَا.", "tr": "Anā min Indūnīsiyā."}], "id": "Saya dari Indonesia.", "aid": "Kamu dari mana?", "aar": "مِنْ أَيْنَ أَنْتَ؟", "bid": "Saya dari Indonesia.", "bar": "أَنَا مِنْ إِنْدُونِيسِيَا."}, {"n": "20", "v": [{"l": "", "ar": "أَنَا مِنْ جَاكَرْتَا.", "tr": "Anā min Jākartā."}], "id": "Saya dari Jakarta.", "aid": "Dari kota mana?", "aar": "مِنْ أَيِّ مَدِينَةٍ؟", "bid": "Saya dari Jakarta.", "bar": "أَنَا مِنْ جَاكَرْتَا."}, {"n": "21", "v": [{"l": "Laki-laki", "ar": "أَيْنَ تَسْكُنُ؟", "tr": "Ayna taskunu?"}, {"l": "Perempuan", "ar": "أَيْنَ تَسْكُنِينَ؟", "tr": "Ayna taskunīna?"}], "id": "Kamu tinggal di mana?", "aid": "Kamu tinggal di mana?", "aar": "أَيْنَ تَسْكُنُ؟", "bid": "Saya tinggal di Surabaya.", "bar": "أَسْكُنُ فِي سُورَابَايَا."}, {"n": "22", "v": [{"l": "", "ar": "أَسْكُنُ فِي الْقَاهِرَةِ.", "tr": "Askunu fī al-qāhirati."}], "id": "Saya tinggal di Kairo.", "aid": "Kamu tinggal di mana?", "aar": "أَيْنَ تَسْكُنُ؟", "bid": "Saya tinggal di Kairo.", "bar": "أَسْكُنُ فِي الْقَاهِرَةِ."}, {"n": "23", "v": [{"l": "Laki-laki", "ar": "أَنَا طَالِبٌ.", "tr": "Anā ṭālibun."}, {"l": "Perempuan", "ar": "أَنَا طَالِبَةٌ.", "tr": "Anā ṭālibatun."}], "id": "Saya seorang pelajar / mahasiswa.", "aid": "Apakah kamu pelajar?", "aar": "هَلْ أَنْتَ طَالِبٌ؟", "bid": "Saya seorang pelajar / mahasiswa.", "bar": "أَنَا طَالِبٌ."}, {"n": "24", "v": [{"l": "Laki-laki", "ar": "أَنَا مُعَلِّمٌ.", "tr": "Anā muʿallimun."}, {"l": "Perempuan", "ar": "أَنَا مُعَلِّمَةٌ.", "tr": "Anā muʿallimatun."}], "id": "Saya seorang guru.", "aid": "Apa pekerjaanmu?", "aar": "مَاذَا تَعْمَلُ؟", "bid": "Saya seorang guru.", "bar": "أَنَا مُعَلِّمٌ."}, {"n": "25", "v": [{"l": "Laki-laki", "ar": "مَاذَا تَعْمَلُ؟", "tr": "Mādhā taʿmalu?"}, {"l": "Perempuan", "ar": "مَاذَا تَعْمَلِينَ؟", "tr": "Mādhā taʿmalīna?"}], "id": "Apa pekerjaanmu?", "aid": "Apa pekerjaanmu?", "aar": "مَاذَا تَعْمَلُ؟", "bid": "Saya dokter.", "bar": "أَنَا طَبِيبٌ."}, {"n": "26", "v": [{"l": "Laki-laki", "ar": "أَنَا مُهَنْدِسٌ.", "tr": "Anā muhandisun."}, {"l": "Perempuan", "ar": "أَنَا مُهَنْدِسَةٌ.", "tr": "Anā muhandisatun."}], "id": "Saya seorang insinyur.", "aid": "Apa pekerjaanmu?", "aar": "مَاذَا تَعْمَلُ؟", "bid": "Saya seorang insinyur.", "bar": "أَنَا مُهَنْدِسٌ."}, {"n": "27", "v": [{"l": "Laki-laki", "ar": "كَمْ عُمْرُكَ؟", "tr": "Kam ʿumruka?"}, {"l": "Perempuan", "ar": "كَمْ عُمْرُكِ؟", "tr": "Kam ʿumruki?"}], "id": "Berapa umurmu?", "aid": "Berapa umurmu?", "aar": "كَمْ عُمْرُكَ؟", "bid": "Umur saya dua puluh tahun.", "bar": "عُمْرِي عِشْرُونَ سَنَةً."}, {"n": "28", "v": [{"l": "", "ar": "عُمْرِي ثَلَاثُونَ سَنَةً.", "tr": "ʿUmrī thalāthūna sanatan."}], "id": "Umur saya tiga puluh tahun.", "aid": "Berapa umurmu?", "aar": "كَمْ عُمْرُكَ؟", "bid": "Umur saya tiga puluh tahun.", "bar": "عُمْرِي ثَلَاثُونَ سَنَةً."}, {"n": "257", "v": [{"l": "Laki-laki", "ar": "تَشَرَّفْتُ بِمَعْرِفَتِكَ.", "tr": "Tasharraftu bi-maʿrifatika."}, {"l": "Perempuan", "ar": "تَشَرَّفْتُ بِمَعْرِفَتِكِ.", "tr": "Tasharraftu bi-maʿrifatiki."}], "id": "Saya senang mengenalmu.", "aid": "Saya senang mengenalmu.", "aar": "تَشَرَّفْتُ بِمَعْرِفَتِكَ.", "bid": "Justru saya yang merasa terhormat.", "bar": "الشَّرَفُ لِي."}, {"n": "258", "v": [{"l": "", "ar": "الشَّرَفُ لِي.", "tr": "Ash-sharafu lī."}], "id": "Saya yang merasa terhormat.", "aid": "Saya senang mengenalmu.", "aar": "تَشَرَّفْتُ بِمَعْرِفَتِكَ.", "bid": "Saya yang merasa terhormat.", "bar": "الشَّرَفُ لِي."}, {"n": "266", "v": [{"l": "", "ar": "هَذَا زَمِيلِي.", "tr": "Hādhā zamīlī."}], "id": "Ini rekan kerja saya.", "aid": "Ini rekan kerja saya.", "aar": "هَذَا زَمِيلِي.", "bid": "Selamat datang.", "bar": "أَهْلًا بِكَ."}, {"n": "267", "v": [{"l": "", "ar": "اسْمُهُ عَلِيٌّ.", "tr": "Ismuhu ʿAliyyun."}], "id": "Namanya Ali.", "aid": "Siapa nama temanmu?", "aar": "مَا اسْمُ صَدِيقِكَ؟", "bid": "Namanya Ali.", "bar": "اسْمُهُ عَلِيٌّ."}, {"n": "268", "v": [{"l": "", "ar": "اسْمُهَا فَاطِمَةُ.", "tr": "Ismuhā Fāṭimatu."}], "id": "Namanya Fatimah.", "aid": "Siapa nama saudarimu?", "aar": "مَا اسْمُ أُخْتِكَ؟", "bid": "Namanya Fatimah.", "bar": "اسْمُهَا فَاطِمَةُ."}, {"n": "269", "v": [{"l": "", "ar": "هُوَ مِنْ مَالِيزِيَا.", "tr": "Huwa min Mālīziyā."}], "id": "Dia dari Malaysia.", "aid": "Dia dari mana?", "aar": "مِنْ أَيْنَ هُوَ؟", "bid": "Dia dari Malaysia.", "bar": "هُوَ مِنْ مَالِيزِيَا."}, {"n": "270", "v": [{"l": "", "ar": "هِيَ مِنْ مِصْرَ.", "tr": "Hiya min Miṣra."}], "id": "Dia (perempuan) dari Mesir.", "aid": "Dia (perempuan) dari mana?", "aar": "مِنْ أَيْنَ هِيَ؟", "bid": "Dia (perempuan) dari Mesir.", "bar": "هِيَ مِنْ مِصْرَ."}, {"n": "271", "v": [{"l": "", "ar": "نَحْنُ مِنْ إِنْدُونِيسِيَا.", "tr": "Naḥnu min Indūnīsiyā."}], "id": "Kami dari Indonesia.", "aid": "Kalian dari mana?", "aar": "مِنْ أَيْنَ أَنْتُمْ؟", "bid": "Kami dari Indonesia.", "bar": "نَحْنُ مِنْ إِنْدُونِيسِيَا."}, {"n": "272", "v": [{"l": "Laki-laki", "ar": "أَنَا مُسْلِمٌ.", "tr": "Anā muslimun."}, {"l": "Perempuan", "ar": "أَنَا مُسْلِمَةٌ.", "tr": "Anā muslimatun."}], "id": "Saya seorang Muslim.", "aid": "Saya seorang Muslim.", "aar": "أَنَا مُسْلِمٌ.", "bid": "Alhamdulillah.", "bar": "الْحَمْدُ لِلَّهِ."}, {"n": "273", "v": [{"l": "Laki-laki", "ar": "أَنَا مُتَزَوِّجٌ.", "tr": "Anā mutazawwijun."}, {"l": "Perempuan", "ar": "أَنَا مُتَزَوِّجَةٌ.", "tr": "Anā mutazawwijatun."}], "id": "Saya sudah menikah.", "aid": "Apakah kamu sudah menikah?", "aar": "هَلْ أَنْتَ مُتَزَوِّجٌ؟", "bid": "Saya sudah menikah.", "bar": "أَنَا مُتَزَوِّجٌ."}, {"n": "274", "v": [{"l": "Laki-laki", "ar": "أَنَا أَعْزَبُ.", "tr": "Anā aʿzabu."}, {"l": "Perempuan", "ar": "أَنَا عَزْبَاءُ.", "tr": "Anā ʿazbāʾu."}], "id": "Saya masih lajang.", "aid": "Saya masih lajang.", "aar": "أَنَا أَعْزَبُ.", "bid": "Saya sudah menikah.", "bar": "وَأَنَا مُتَزَوِّجٌ."}, {"n": "275", "v": [{"l": "Laki-laki", "ar": "هَلْ أَنْتَ مُتَزَوِّجٌ؟", "tr": "Hal anta mutazawwijun?"}, {"l": "Perempuan", "ar": "هَلْ أَنْتِ مُتَزَوِّجَةٌ؟", "tr": "Hal anti mutazawwijatun?"}], "id": "Apakah kamu sudah menikah?", "aid": "Apakah kamu sudah menikah?", "aar": "هَلْ أَنْتَ مُتَزَوِّجٌ؟", "bid": "Belum, saya lajang.", "bar": "لَا، أَنَا أَعْزَبُ."}, {"n": "501", "v": [{"l": "Laki-laki", "ar": "هَلْ تَسْمَحُ لِي؟", "tr": "Hal tasmaḥu lī?"}, {"l": "Perempuan", "ar": "هَلْ تَسْمَحِينَ لِي؟", "tr": "Hal tasmaḥīna lī?"}], "id": "Bolehkah saya? / Permisi?", "aid": "Bolehkah saya? / Permisi?", "aar": "هَلْ تَسْمَحُ لِي؟", "bid": "Silakan.", "bar": "تَفَضَّلْ."}, {"n": "502", "v": [{"l": "Laki-laki", "ar": "هَلْ أَنْتَ هُنَا جَدِيدٌ؟", "tr": "Hal anta hunā jadīdun?"}, {"l": "Perempuan", "ar": "هَلْ أَنْتِ هُنَا جَدِيدَةٌ؟", "tr": "Hal anti hunā jadīdatun?"}], "id": "Apakah kamu baru di sini?", "aid": "Apakah kamu baru di sini?", "aar": "هَلْ أَنْتَ هُنَا جَدِيدٌ؟", "bid": "Ya, saya tiba kemarin.", "bar": "نَعَمْ، وَصَلْتُ أَمْسِ."}, {"n": "503", "v": [{"l": "Laki-laki", "ar": "مَا جِنْسِيَّتُكَ؟", "tr": "Mā jinsiyyatuka?"}, {"l": "Perempuan", "ar": "مَا جِنْسِيَّتُكِ؟", "tr": "Mā jinsiyyatuki?"}], "id": "Apa kewarganegaraanmu?", "aid": "Apa kewarganegaraanmu?", "aar": "مَا جِنْسِيَّتُكَ؟", "bid": "Saya orang Indonesia.", "bar": "أَنَا إِنْدُونِيسِيٌّ."}, {"n": "504", "v": [{"l": "Laki-laki", "ar": "أَنَا إِنْدُونِيسِيٌّ.", "tr": "Anā Indūnīsiyyun."}, {"l": "Perempuan", "ar": "أَنَا إِنْدُونِيسِيَّةٌ.", "tr": "Anā Indūnīsiyyatun."}], "id": "Saya orang Indonesia.", "aid": "Apa kewarganegaraanmu?", "aar": "مَا جِنْسِيَّتُكَ؟", "bid": "Saya orang Indonesia.", "bar": "أَنَا إِنْدُونِيسِيٌّ."}, {"n": "505", "v": [{"l": "", "ar": "هُوَ سُعُودِيٌّ.", "tr": "Huwa Suʿūdiyyun."}], "id": "Dia orang Arab Saudi.", "aid": "Dia orang Arab Saudi.", "aar": "هُوَ سُعُودِيٌّ.", "bid": "Dan dia (perempuan) orang Maroko.", "bar": "وَهِيَ مَغْرِبِيَّةٌ."}, {"n": "506", "v": [{"l": "", "ar": "هِيَ مَغْرِبِيَّةٌ.", "tr": "Hiya maghribiyyatun."}], "id": "Dia (perempuan) orang Maroko.", "aid": "Siapa dia?", "aar": "مَنْ هِيَ؟", "bid": "Dia (perempuan) orang Maroko.", "bar": "هِيَ مَغْرِبِيَّةٌ."}, {"n": "509", "v": [{"l": "Laki-laki", "ar": "مَا عُنْوَانُكَ؟", "tr": "Mā ʿunwānuka?"}, {"l": "Perempuan", "ar": "مَا عُنْوَانُكِ؟", "tr": "Mā ʿunwānuki?"}], "id": "Apa alamatmu?", "aid": "Apa alamatmu?", "aar": "مَا عُنْوَانُكَ؟", "bid": "Alamat saya Jalan Mawar.", "bar": "عُنْوَانِي شَارِعُ الْوَرْدِ."}]}, "3": {"ar": "وصف الأشخاص والجسم", "id": "Deskripsi Orang dan Tubuh", "items": [{"n": "521", "v": [{"l": "", "ar": "هُوَ طَوِيلٌ.", "tr": "Huwa ṭawīlun."}], "id": "Dia (laki-laki) tinggi.", "aid": "Seperti apa dia?", "aar": "كَيْفَ هُوَ؟", "bid": "Dia (laki-laki) tinggi.", "bar": "هُوَ طَوِيلٌ."}, {"n": "522", "v": [{"l": "", "ar": "هِيَ قَصِيرَةٌ.", "tr": "Hiya qaṣīratun."}], "id": "Dia (perempuan) pendek.", "aid": "Seperti apa dia?", "aar": "كَيْفَ هِيَ؟", "bid": "Dia (perempuan) pendek.", "bar": "هِيَ قَصِيرَةٌ."}, {"n": "523", "v": [{"l": "", "ar": "أَخِي نَحِيفٌ.", "tr": "Akhī naḥīfun."}], "id": "Saudara laki-laki saya kurus.", "aid": "Saudara laki-laki saya kurus.", "aar": "أَخِي نَحِيفٌ.", "bid": "Saya juga.", "bar": "وَأَنَا أَيْضًا."}, {"n": "524", "v": [{"l": "", "ar": "هُوَ قَوِيٌّ.", "tr": "Huwa qawiyyun."}], "id": "Dia kuat.", "aid": "Dia kuat.", "aar": "هُوَ قَوِيٌّ.", "bid": "Ya, dia berolahraga.", "bar": "نَعَمْ، يَلْعَبُ الرِّيَاضَةَ."}, {"n": "525", "v": [{"l": "", "ar": "هِيَ جَمِيلَةٌ.", "tr": "Hiya jamīlatun."}], "id": "Dia (perempuan) cantik.", "aid": "Dia (perempuan) cantik.", "aar": "هِيَ جَمِيلَةٌ.", "bid": "Dan baik juga.", "bar": "وَطَيِّبَةٌ أَيْضًا."}, {"n": "526", "v": [{"l": "", "ar": "أَبِي كَبِيرٌ فِي السِّنِّ.", "tr": "Abī kabīrun fī as-sinni."}], "id": "Ayah saya sudah tua.", "aid": "Ayah saya sudah tua.", "aar": "أَبِي كَبِيرٌ فِي السِّنِّ.", "bid": "Semoga Allah memanjangkan umurnya.", "bar": "أَطَالَ اللهُ عُمْرَهُ."}, {"n": "527", "v": [{"l": "", "ar": "هُوَ شَابٌّ.", "tr": "Huwa shābbun."}], "id": "Dia masih muda.", "aid": "Berapa umurnya?", "aar": "كَمْ عُمْرُهُ؟", "bid": "Dia masih muda.", "bar": "هُوَ شَابٌّ."}, {"n": "528", "v": [{"l": "", "ar": "هِيَ طَيِّبَةٌ وَلَطِيفَةٌ.", "tr": "Hiya ṭayyibatun wa-laṭīfatun."}], "id": "Dia (perempuan) baik dan ramah.", "aid": "Dia (perempuan) baik dan ramah.", "aar": "هِيَ طَيِّبَةٌ وَلَطِيفَةٌ.", "bid": "Saya tahu itu.", "bar": "أَعْرِفُ ذَلِكَ."}, {"n": "529", "v": [{"l": "", "ar": "مُعَلِّمِي صَبُورٌ.", "tr": "Muʿallimī ṣabūrun."}], "id": "Guru saya sabar.", "aid": "Guru saya sabar.", "aar": "مُعَلِّمِي صَبُورٌ.", "bid": "Itu penting.", "bar": "هَذَا مُهِمٌّ."}, {"n": "530", "v": [{"l": "", "ar": "صَدِيقِي ذَكِيٌّ.", "tr": "Ṣadīqī dhakiyyun."}], "id": "Teman saya pintar.", "aid": "Teman saya pintar.", "aar": "صَدِيقِي ذَكِيٌّ.", "bid": "Masyaallah.", "bar": "مَا شَاءَ اللهُ."}, {"n": "531", "v": [{"l": "", "ar": "هُوَ كَسُولٌ.", "tr": "Huwa kasūlun."}], "id": "Dia malas.", "aid": "Dia malas.", "aar": "هُوَ كَسُولٌ.", "bid": "Tidak, dia hanya capek.", "bar": "لَا، هُوَ مُتْعَبٌ فَقَطْ."}, {"n": "532", "v": [{"l": "", "ar": "هُوَ مُجْتَهِدٌ.", "tr": "Huwa mujtahidun."}], "id": "Dia rajin.", "aid": "Dia rajin.", "aar": "هُوَ مُجْتَهِدٌ.", "bid": "Ya, dia belajar setiap hari.", "bar": "نَعَمْ، يَدْرُسُ كُلَّ يَوْمٍ."}, {"n": "533", "v": [{"l": "", "ar": "شَعْرُهَا طَوِيلٌ.", "tr": "Shaʿruhā ṭawīlun."}], "id": "Rambutnya panjang.", "aid": "Rambutnya panjang.", "aar": "شَعْرُهَا طَوِيلٌ.", "bid": "Dan indah.", "bar": "وَجَمِيلٌ."}, {"n": "534", "v": [{"l": "", "ar": "عَيْنَاكِ جَمِيلَتَانِ.", "tr": "ʿAynāki jamīlatāni."}], "id": "Matamu indah (untuk perempuan).", "aid": "Matamu indah (untuk perempuan).", "aar": "عَيْنَاكِ جَمِيلَتَانِ.", "bid": "Terima kasih.", "bar": "شُكْرًا."}, {"n": "535", "v": [{"l": "", "ar": "كَيْفَ هُوَ؟", "tr": "Kayfa huwa?"}], "id": "Bagaimana dia?", "aid": "Bagaimana dia?", "aar": "كَيْفَ هُوَ؟", "bid": "Dia ramah.", "bar": "هُوَ لَطِيفٌ."}, {"n": "536", "v": [{"l": "", "ar": "هَذَا رَأْسِي.", "tr": "Hādhā raʾsī."}], "id": "Ini kepala saya.", "aid": "Apa ini?", "aar": "مَا هَذَا؟", "bid": "Ini kepala saya.", "bar": "هَذَا رَأْسِي."}, {"n": "537", "v": [{"l": "", "ar": "هَذِهِ يَدِي.", "tr": "Hādhihi yadī."}], "id": "Ini tangan saya.", "aid": "Apa ini?", "aar": "مَا هَذِهِ؟", "bid": "Ini tangan saya.", "bar": "هَذِهِ يَدِي."}, {"n": "538", "v": [{"l": "", "ar": "هَذِهِ رِجْلِي.", "tr": "Hādhihi rijlī."}], "id": "Ini kaki saya.", "aid": "Apa ini?", "aar": "مَا هَذِهِ؟", "bid": "Ini kaki saya.", "bar": "هَذِهِ رِجْلِي."}]}}, "all": [["التحية والمناسبات والضيافة", "Salam, Perayaan, dan Keramahan"], ["التعارف", "Perkenalan"], ["وصف الأشخاص والجسم", "Deskripsi Orang dan Tubuh"], ["اللغة", "Bahasa"], ["الشكر والاعتذار والأدب", "Terima Kasih, Maaf, dan Sopan Santun"], ["الموافقة والرفض والرأي", "Setuju, Menolak, dan Pendapat"], ["الوداع", "Perpisahan"], ["الأسرة", "Keluarga"], ["المنزل", "Rumah"], ["أعمال المنزل والمشكلات", "Pekerjaan Rumah dan Masalah"], ["الحياة اليومية", "Kehidupan Sehari-hari"], ["الأرقام والوقت والتاريخ", "Angka, Waktu, dan Tanggal"], ["الطعام والشراب", "Makanan dan Minuman"], ["المطعم", "Restoran"], ["التسوق والسوق", "Belanja dan Pasar"], ["الملابس والألوان", "Pakaian dan Warna"], ["المال والدفع", "Uang dan Pembayaran"], ["المدرسة والجامعة", "Sekolah dan Universitas"], ["العمل", "Pekerjaan"], ["الهاتف والإنترنت والتقنية", "Telepon, Internet, dan Teknologi"], ["الأماكن والاتجاهات والمدينة", "Tempat, Arah, dan Kota"], ["المواصلات وسيارة الأجرة", "Transportasi dan Taksi"], ["السفر والمطار والفندق", "Perjalanan, Bandara, dan Hotel"], ["الطقس", "Cuaca"], ["الصحة والطبيب والصيدلية", "Kesehatan, Dokter, dan Apotek"], ["المشاعر", "Perasaan"], ["الأصدقاء والهوايات", "Teman dan Hobi"], ["الحيوانات", "Hewan"], ["طلب المساعدة والأوامر", "Meminta Bantuan dan Perintah"], ["الأسئلة", "Pertanyaan"], ["الطوارئ", "Keadaan Darurat"], ["العبارات الدينية والدعاء", "Ungkapan Islami dan Doa"]]};
+const QUIZ={1:'quiz-1.html',2:'quiz-2.html',3:'quiz-3.html'};
+const READY=[1,2,3];
+const $=s=>document.querySelector(s);
+const ui=$('#ui'),stage=$('#stage');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='scale('+s+')'}
+addEventListener('resize',fit);fit();
+
+/* ---------- audio ---------- */
+let token=0,curAudio=null,voice=null,rate=0.85,auto=true;
+function pickVoice(){const v=speechSynthesis.getVoices();voice=v.find(x=>/^ar/i.test(x.lang))||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function stopAudio(){token++;try{speechSynthesis.cancel()}catch(e){}if(curAudio){try{curAudio.pause()}catch(e){}curAudio=null}document.querySelectorAll('.spk.play').forEach(e=>e.classList.remove('play'))}
+function tts(text){return new Promise(res=>{
+  if(!('speechSynthesis' in window)){res();return}
+  const u=new SpeechSynthesisUtterance(text.replace(/[،؟]/g,' '));u.lang='ar-SA';if(voice)u.voice=voice;u.rate=rate;
+  let done=false;const fin=()=>{if(!done){done=true;res()}};u.onend=fin;u.onerror=fin;setTimeout(fin,15000);
+  speechSynthesis.speak(u);
+  if(!voice&&!speechSynthesis.getVoices().length)$('#warn').textContent='';
+})}
+function playKey(key,text){return new Promise(res=>{
+  let fell=false;const fb=()=>{if(fell)return;fell=true;tts(text).then(res)};
+  const a=new Audio('audio/'+key+'.mp3');a.playbackRate=rate;curAudio=a;a.onerror=fb;a.onended=()=>res();
+  const p=a.play();if(p&&p.catch)p.catch(fb);
+})}
+async function speak(key,text,btn){stopAudio();const my=token;if(btn)btn.classList.add('play');await playKey(key,text);if(btn&&my===token)btn.classList.remove('play')}
+async function seq(list){stopAudio();const my=token;for(const [k,t,b] of list){if(my!==token)return;const btn=b?document.getElementById(b):null;if(btn)btn.classList.add('play');await playKey(k,t);if(btn)btn.classList.remove('play');await new Promise(r=>setTimeout(r,350))}}
+window.sp=(k,t,id)=>speak(k,t,document.getElementById(id));
+
+/* ---------- pieces ---------- */
+const SPK='<svg viewBox="0 0 64 64"><path d="M8 24h12l16-13v42L20 40H8z" fill="#fff"/><path d="M42 22a14 14 0 0 1 0 20M48 14a24 24 0 0 1 0 36" stroke="#f2c651" stroke-width="5" fill="none" stroke-linecap="round"/></svg>';
+const LOCK='<svg class="lk" viewBox="0 0 64 64"><path d="M18 30V20A14 14 0 0 1 46 20V30H40V20A8 8 0 0 0 24 20V30ZM10 30H54V60H10Z" fill="#f2c651"/></svg>';
+const LOGO='<svg viewBox="0 0 120 120"><path d="M70 22a38 38 0 1 0 0 76a30 30 0 1 1 0-76z" fill="#f2c651"/><path d="M82 40l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff"/></svg>';
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+function head(title,ribbon){return `<div class="pill">${title}</div><div class="banner"><div class="logo">${LOGO}</div><div class="t1">العربية الفصحى</div><div class="t2">aL-ARABIYA aL-FUSHA</div></div><div class="badge"><div class="c">A1</div><div class="p">Pemula</div></div>${ribbon?`<div class="ribbon">${ribbon}</div>`:''}`}
+function nav(prev,next,pl,nl){return `<button class="nbtn" style="left:50px" onclick="${prev}"><i>←</i>${pl}</button>${next?`<button class="nbtn" style="right:50px;flex-direction:row-reverse" onclick="${next}"><i>→</i>${nl}</button>`:''}`}
+function speaker(id,key,text){return `<button class="spk" id="${id}" onclick="sp('${key}','${esc(text).replace(/\\/g,'')}','${id}')">${SPK}</button>`}
+function tools(){return `<div id="tools"><div class="tool">Kecepatan · السرعة<div class="row"><button class="${rate==0.6?'on':''}" onclick="setRate(0.6)">🐢</button><button class="${rate==0.85?'on':''}" onclick="setRate(0.85)">🙂</button><button class="${rate==1?'on':''}" onclick="setRate(1)">🐇</button></div></div><div class="tool">Otomatis · تلقائي<div class="row"><button class="${auto?'on':''}" onclick="setAuto(true)">ON</button><button class="${!auto?'on':''}" onclick="setAuto(false)">OFF</button></div></div></div>`}
+window.setRate=r=>{rate=r;render()};window.setAuto=a=>{auto=a;render(true)};
+
+/* ---------- state ---------- */
+let S={v:'hub',t:0,i:0};
+function slides(t){
+  const T=D.topics[t],L=[{k:'cover'}];
+  T.items.forEach((it,j)=>{L.push({k:'s',j});L.push({k:'d',j})});
+  L.push({k:'end'});return L;
+}
+function go(h){location.hash=h}
+function parse(){
+  const h=location.hash.slice(1)||'hub';
+  if(h==='hub'||h==='lessons'||h==='quizzes')S={v:h};
+  else{const m=h.match(/^t(\d+)\/(\d+)$/);if(m)S={v:'t',t:+m[1],i:+m[2]};else S={v:'hub'}}
+  render();
+}
+addEventListener('hashchange',parse);
+
+function render(keep){
+  if(!keep)stopAudio();
+  let h='';
+  if(S.v==='hub'){
+    h=head('A1<small>Pilih menu</small>','Level A1 · Pemula — Pilih menu belajar')+
+    `<a class="hcard" style="left:290px" href="#lessons"><div class="ic"><svg viewBox="0 0 64 64"><path d="M8 14q12-4 24 4q12-8 24-4v38q-12-4-24 4q-12-8-24-4z" fill="#fff"/><path d="M32 18v38" stroke="#165138" stroke-width="3"/></svg></div><div class="a">الدروس</div><div class="i">PELAJARAN</div><div class="s">Slide kalimat + contoh dialog + audio</div></a>
+     <a class="hcard" style="left:1010px" href="#quizzes"><div class="ic"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#fff"/><path d="M19 33l9 9 18-20" stroke="#165138" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="a">الاختبارات</div><div class="i">KUIS</div><div class="s">Latihan interaktif per topik</div></a>
+     <div id="hint">Listen • Repeat • Understand • Use</div>`;
+  }else if(S.v==='lessons'||S.v==='quizzes'){
+    const q=S.v==='quizzes';
+    let g='';
+    D.all.forEach((p,k)=>{
+      const n=k+1,on=READY.includes(n),x=(k%4)*434,y=Math.floor(k/4)*78;
+      const href=on?(q?QUIZ[n]:'#t'+n+'/0'):null;
+      g+=`<${on?'a href="'+href+'"':'div'} class="gi ${on?'on':''}" style="left:${x}px;top:${y}px">${on?`<span class="no">${n}</span>`:LOCK}<div class="tx"><div class="ta">${p[0]}</div><div class="ti">${p[1]}</div></div></${on?'a':'div'}>`;
+    });
+    h=head(q?'KUIS':'PELAJARAN',q?'Pilih kuis · اختر الاختبار':'Pilih topik · اختر الموضوع')+`<div class="grid">${g}</div>`+nav("go('hub')",null,'Menu Utama','');
+  }else{
+    const T=D.topics[S.t],L=slides(S.t),s=L[S.i],last=L.length-1;
+    const pt=`TOPIK ${S.t}<small>${esc(T.id)}</small>`;
+    const rb=s.k==='s'?'Kalimat · الجملة':s.k==='d'?'Contoh dialog · حوار':s.k==='cover'?'Mulai belajar':'Ringkasan · مراجعة';
+    h=head(pt,rb);
+    let body='',autoList=null;
+    if(s.k==='cover'){
+      h+=`<div class="cover fade"><div class="meta">Topik ${S.t} · ${T.items.length} kalimat</div><div class="ar">${T.ar}</div><div class="id">${esc(T.id)}</div><button class="go" onclick="go('t${S.t}/1')">Mulai · ابدأ ←</button></div>`;
+    }else if(s.k==='s'){
+      const it=T.items[s.j],two=it.v.length>1;
+      let cols='';autoList=[];
+      it.v.forEach((v,q)=>{
+        const id='sp'+q,key=it.n+(q?'f':'');
+        autoList.push([key,v.ar,id]);
+        cols+=`<div class="col ${two?'':'one'}">${v.l?`<span class="lab">${v.l}</span>`:''}<div class="ar">${v.ar}</div><div class="tr">${esc(v.tr)}</div>${speaker(id,key,v.ar)}</div>`;
+      });
+      h+=`<div class="card fade"><div class="numb">${it.n}</div><div class="cols">${cols}</div><div class="mean">${esc(it.id)}</div></div>`;
+      window._al=autoList;
+    }else if(s.k==='d'){
+      const it=T.items[s.j];
+      autoList=[[it.n+'a',it.aar,'sa'],[it.n+'b',it.bar,'sb']];
+      h+=`<div class="card fade"><div class="numb">${it.n}</div>
+       <div class="bub a"><div class="who">أ</div><div class="txt"><div class="ar">${it.aar.replace(/^أ:\s*/,'')}</div><div class="idn">${esc(it.aid)}</div></div>${speaker('sa',it.n+'a',it.aar.replace(/^أ:\s*/,''))}</div>
+       <div class="bub b"><div class="who">ب</div><div class="txt"><div class="ar">${it.bar.replace(/^ب:\s*/,'')}</div><div class="idn">${esc(it.bid)}</div></div>${speaker('sb',it.n+'b',it.bar.replace(/^ب:\s*/,''))}</div>
+       <button class="pdlg" onclick="seq(window._al)">▶ Putar dialog · شغّل الحوار</button></div>`;
+      autoList=[[it.n+'a',it.aar.replace(/^أ:\s*/,''),'sa'],[it.n+'b',it.bar.replace(/^ب:\s*/,''),'sb']];
+      window._al=autoList;
+    }else{
+      let rows='';T.items.forEach((it,j)=>{rows+=`<a href="#t${S.t}/${1+j*2}" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;background:#fff;border:3px solid var(--gold);border-radius:18px;padding:2px 12px"><b style="color:var(--g);width:46px;font-size:20px">${it.n}</b><span class="ar" style="font-size:26px;font-weight:700;flex:1;color:var(--gd);white-space:nowrap;overflow:hidden">${it.v[0].ar}</span></a>`});
+      h+=`<div class="card fade" style="overflow:auto;padding:26px 30px"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${rows}</div></div>
+      <a class="go" style="position:absolute;left:1560px;top:300px;width:320px;text-align:center;font-size:30px;padding:18px 10px;line-height:1.3;text-decoration:none" href="${QUIZ[S.t]}">Kuis topik ${S.t}<br>الاختبار ←</a>`;
+    }
+    const pv=S.i>0?`go('t${S.t}/${S.i-1}')`:"go('lessons')";
+    const nx=S.i<last?`go('t${S.t}/${S.i+1}')`:`go('lessons')`;
+    h+=`<div id="cnt">${S.i+1} / ${L.length}</div><div id="prog"><b style="width:${(S.i/last)*100}%"></b></div>`;
+    h+=nav(pv,nx,S.i>0?'Sebelumnya':'Daftar isi',S.i<last?'Selanjutnya':'Selesai');
+    if(s.k==='s'||s.k==='d')h+=tools();
+    ui.innerHTML=h;
+    if((s.k==='s'||s.k==='d')&&auto&&!keep)setTimeout(()=>seq(window._al),450);
+    if(!('speechSynthesis' in window))$('#warn').textContent='Browser tidak mendukung suara · المتصفح لا يدعم الصوت';
+    return;
+  }
+  ui.innerHTML=h;
+}
+addEventListener('keydown',e=>{
+  if(S.v!=='t')return;const L=slides(S.t);
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')go('t'+S.t+'/'+Math.min(S.i+1,L.length-1));
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp')go('t'+S.t+'/'+Math.max(S.i-1,0));
+  else if(e.key==='p')seq(window._al||[]);
+});
+let tx=null;
+addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',e=>{if(tx===null||S.v!=='t')return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)<90)return;const L=slides(S.t);
+  go('t'+S.t+'/'+(dx<0?Math.min(S.i+1,L.length-1):Math.max(S.i-1,0)))},{passive:true});
+parse();
+</script>
+</body>
+</html>
