@@ -4,6 +4,7 @@ import edge_tts
 
 MALE = "ar-SA-HamedNeural"
 FEMALE = "ar-SA-ZariyahNeural"
+OVERWRITE = True   # True = ولّد كل شيء من جديد حتى لو الملف موجود
 RATE = "-10%"   # sedikit lebih lambat untuk pemula; ubah ke "+0%" jika ingin normal
 
 here = os.path.dirname(os.path.abspath(__file__))
@@ -18,7 +19,7 @@ async def main():
         name, text = r["nama_file"], r["teks_arab"]
         path = os.path.join(out, name)
         voice = FEMALE if name.endswith("f.mp3") else MALE
-        if os.path.exists(path):
+        if os.path.exists(path) and not OVERWRITE:
             continue
         key = (text, voice)
         if key in done and os.path.exists(done[key]):

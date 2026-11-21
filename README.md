@@ -10,7 +10,7 @@ Secara bawaan suara memakai pembaca suara browser (ar-SA). Jika ingin rekaman as
 - `NOMORa.mp3` → ucapan A pada dialog, contoh `14a.mp3`
 - `NOMORb.mp3` → ucapan B pada dialog, contoh `14b.mp3`
 
-NOMOR = nomor kalimat di slide (1–28, 257–… dst). Jika file tidak ada, otomatis kembali ke suara browser.
+NOMOR = nomor kalimat di slide. Jika file tidak ada, otomatis kembali ke suara browser.
 
 ## GitHub Pages
 Unggah seluruh isi folder ke repo → Settings → Pages → Deploy from branch → `main` / root.
@@ -18,5 +18,5 @@ Unggah seluruh isi folder ke repo → Settings → Pages → Deploy from branch 
 ## Membuat suara otomatis (gratis)
 1. Pasang Python, lalu jalankan: `pip install edge-tts`
 2. Letakkan `make_audio.py` dan `audio_list.csv` di folder yang sama dengan `index.html`
-3. Jalankan: `python make_audio.py` → folder `audio/` terisi 256 file mp3
+3. Jalankan: `python make_audio.py` → folder `audio/` terisi 2395 file mp3
 4. Unggah folder `audio/` ke GitHub.
