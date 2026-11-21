@@ -1,6 +1,6 @@
 # 3000 Kalimat Bahasa Arab Populer — A1
 
-Buka `index.html`. Isi: menu utama → daftar topik → pelajaran (topik 1–3), dan kuis (`quiz-1.html`, `quiz-2.html`, `quiz-3.html`).
+Buka `index.html`. Isi: menu utama → daftar topik → pelajaran (topik 1–3), dan kuis (`quiz-1.html` … `quiz-32.html`).
 
 ## Suara
 Secara bawaan suara memakai pembaca suara browser (ar-SA). Jika ingin rekaman asli, taruh file mp3 di folder `audio/` dengan nama:

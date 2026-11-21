@@ -71,11 +71,12 @@ h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:.02em;color:var(--g
 .mt .bad{background:#f4b8b8;border-color:var(--no)}
 .note{font-size:.85rem;opacity:.8;text-align:center;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
 </style>
 </head>
 <body>
 <main>
-  <header><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
+  <header><a href="index.html#quizzes" class="back">← Menu · القائمة</a><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <section class="card" id="card" aria-live="polite"></section>
   <p class="note">Tombol 🔊 membaca kalimat memakai suara perangkat; jika tidak ada suara Arab, tombol tidak berbunyi.</p>
@@ -197,6 +198,11 @@ function finish(){
   card.innerHTML=h;var r=document.getElementById('redo');if(r)r.onclick=function(){begin(wrong.slice())};
   document.getElementById('again').onclick=home;document.getElementById('bar').style.width='100%';
 }
+var AUDIO={"السَّلَامُ عَلَيْكُمْ.": "1", "وَعَلَيْكُمُ السَّلَامُ.": "1b", "مَرْحَبًا.": "3", "أَهْلًا بِكَ.": "3b", "أَهْلًا وَسَهْلًا.": "4", "شُكْرًا.": "4b", "صَبَاحُ الْخَيْرِ.": "5", "صَبَاحُ النُّورِ.": "5b", "مَسَاءُ الْخَيْرِ.": "7", "مَسَاءُ النُّورِ.": "7b", "تُصْبِحُ عَلَى خَيْرٍ.": "9", "تُصْبِحِينَ عَلَى خَيْرٍ.": "9f", "وَأَنْتَ مِنْ أَهْلِ الْخَيْرِ.": "9b", "كَيْفَ حَالُكَ؟": "10", "كَيْفَ حَالُكِ؟": "10f", "أَنَا بِخَيْرٍ، شُكْرًا.": "10b", "وَأَنْتَ؟": "12", "وَأَنْتِ؟": "12f", "أَنَا بِخَيْرٍ، وَأَنْتَ؟": "12a", "بِخَيْرٍ، الْحَمْدُ لِلَّهِ.": "12b", "الْحَمْدُ لِلَّهِ.": "13", "كَيْفَ أَصْبَحْتَ؟": "251", "كَيْفَ أَصْبَحْتِ؟": "251f", "أَصْبَحْتُ بِخَيْرٍ.": "251b", "كَيْفَ الْأَهْلُ؟": "252", "كُلُّهُمْ بِخَيْرٍ.": "252b", "مَا الْأَخْبَارُ؟": "253", "لَا جَدِيدَ.": "253b", "اشْتَقْتُ إِلَيْكَ.": "255", "اشْتَقْتُ إِلَيْكِ.": "255f", "وَأَنَا أَيْضًا.": "255b", "يَسْعَدُ صَبَاحُكَ.": "256", "يَسْعَدُ صَبَاحُكِ.": "256f", "وَصَبَاحُكَ.": "256b", "كُلُّ عَامٍ وَأَنْتَ بِخَيْرٍ.": "259", "وَأَنْتَ بِخَيْرٍ.": "259b", "عِيدٌ مُبَارَكٌ.": "260", "عِيدٌ سَعِيدٌ.": "260b", "مَرْحَبًا بِكَ فِي بَيْتِنَا.": "261", "شُكْرًا لَكَ.": "261b", "اجْلِسْ، مِنْ فَضْلِكَ.": "262", "اجْلِسِي، مِنْ فَضْلِكِ.": "262f", "صَوْمًا مَقْبُولًا.": "658", "وَصَوْمُكَ أَيْضًا.": "658b", "مَتَى الْإِفْطَارُ؟": "659", "فِي السَّاعَةِ السَّادِسَةِ.": "659b"},curA=null;
+function speak(t){try{if(curA){curA.pause();curA=null}if(window.speechSynthesis)speechSynthesis.cancel();if(!t)return;
+ function tts(){try{if(!window.speechSynthesis)return;var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+ var k=AUDIO[t];if(!k){tts();return}
+ var a=new Audio('audio/'+k+'.mp3');curA=a;a.playbackRate=.95;a.onerror=tts;var p=a.play();if(p&&p.catch)p.catch(tts)}catch(e){}}
 home();
 </script>
 </body>

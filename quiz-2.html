@@ -71,11 +71,13 @@ h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:.02em;color:var(--g
 .mt .bad{background:#f4b8b8;border-color:var(--no)}
 .note{font-size:.85rem;opacity:.8;text-align:center;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
 </style>
 </head>
 <body>
 <main>
-  <header><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
+  <header><a href="index.html#quizzes" class="back">← Menu · القائمة</a><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <section class="card" id="card" aria-live="polite"></section>
   <p class="note">Tombol 🔊 membaca kalimat memakai suara perangkat; jika tidak ada suara Arab, tombol tidak berbunyi.</p>
@@ -202,6 +204,11 @@ function finish(){
   card.innerHTML=h;var r=document.getElementById('redo');if(r)r.onclick=function(){begin(wrong.slice())};
   document.getElementById('again').onclick=home;document.getElementById('bar').style.width='100%';
 }
+var AUDIO={"مَا اسْمُكَ؟": "14", "مَا اسْمُكِ؟": "14f", "اسْمِي أَحْمَدُ.": "14b", "تَشَرَّفْنَا.": "16", "اسْمِي سَارَةُ.": "16a", "فُرْصَةٌ سَعِيدَةٌ.": "17", "وَأَنَا أَيْضًا.": "17b", "مِنْ أَيْنَ أَنْتَ؟": "18", "مِنْ أَيْنَ أَنْتِ؟": "18f", "أَنَا مِنْ إِنْدُونِيسِيَا.": "18b", "أَنَا مِنْ جَاكَرْتَا.": "20", "مِنْ أَيِّ مَدِينَةٍ؟": "20a", "أَيْنَ تَسْكُنُ؟": "21", "أَيْنَ تَسْكُنِينَ؟": "21f", "أَسْكُنُ فِي سُورَابَايَا.": "21b", "أَسْكُنُ فِي الْقَاهِرَةِ.": "22", "أَنَا طَالِبٌ.": "23", "أَنَا طَالِبَةٌ.": "23f", "هَلْ أَنْتَ طَالِبٌ؟": "23a", "أَنَا مُعَلِّمٌ.": "24", "أَنَا مُعَلِّمَةٌ.": "24f", "مَاذَا تَعْمَلُ؟": "24a", "مَاذَا تَعْمَلِينَ؟": "25f", "أَنَا طَبِيبٌ.": "25b", "أَنَا مُهَنْدِسٌ.": "26", "أَنَا مُهَنْدِسَةٌ.": "26f", "كَمْ عُمْرُكَ؟": "27", "كَمْ عُمْرُكِ؟": "27f", "عُمْرِي عِشْرُونَ سَنَةً.": "27b", "عُمْرِي ثَلَاثُونَ سَنَةً.": "28", "تَشَرَّفْتُ بِمَعْرِفَتِكَ.": "257", "تَشَرَّفْتُ بِمَعْرِفَتِكِ.": "257f", "الشَّرَفُ لِي.": "257b", "هَذَا زَمِيلِي.": "266", "أَهْلًا بِكَ.": "266b", "اسْمُهُ عَلِيٌّ.": "267", "مَا اسْمُ صَدِيقِكَ؟": "267a", "اسْمُهَا فَاطِمَةُ.": "268", "مَا اسْمُ أُخْتِكَ؟": "268a", "هُوَ مِنْ مَالِيزِيَا.": "269", "مِنْ أَيْنَ هُوَ؟": "269a", "هِيَ مِنْ مِصْرَ.": "270", "مِنْ أَيْنَ هِيَ؟": "270a", "نَحْنُ مِنْ إِنْدُونِيسِيَا.": "271", "مِنْ أَيْنَ أَنْتُمْ؟": "271a", "أَنَا مُسْلِمٌ.": "272", "أَنَا مُسْلِمَةٌ.": "272f", "الْحَمْدُ لِلَّهِ.": "272b", "أَنَا مُتَزَوِّجٌ.": "273", "أَنَا مُتَزَوِّجَةٌ.": "273f", "هَلْ أَنْتَ مُتَزَوِّجٌ؟": "273a", "أَنَا أَعْزَبُ.": "274", "أَنَا عَزْبَاءُ.": "274f", "وَأَنَا مُتَزَوِّجٌ.": "274b", "هَلْ أَنْتِ مُتَزَوِّجَةٌ؟": "275f", "لَا، أَنَا أَعْزَبُ.": "275b", "هَلْ تَسْمَحُ لِي؟": "501", "هَلْ تَسْمَحِينَ لِي؟": "501f", "تَفَضَّلْ.": "501b", "هَلْ أَنْتَ هُنَا جَدِيدٌ؟": "502", "هَلْ أَنْتِ هُنَا جَدِيدَةٌ؟": "502f", "نَعَمْ، وَصَلْتُ أَمْسِ.": "502b", "مَا جِنْسِيَّتُكَ؟": "503", "مَا جِنْسِيَّتُكِ؟": "503f", "أَنَا إِنْدُونِيسِيٌّ.": "503b", "أَنَا إِنْدُونِيسِيَّةٌ.": "504f", "هُوَ سُعُودِيٌّ.": "505", "وَهِيَ مَغْرِبِيَّةٌ.": "505b", "هِيَ مَغْرِبِيَّةٌ.": "506", "مَنْ هِيَ؟": "506a", "مَا عُنْوَانُكَ؟": "509", "مَا عُنْوَانُكِ؟": "509f", "عُنْوَانِي شَارِعُ الْوَرْدِ.": "509b"},curA=null;
+function speak(t){try{if(curA){curA.pause();curA=null}if(window.speechSynthesis)speechSynthesis.cancel();if(!t)return;
+ function tts(){try{if(!window.speechSynthesis)return;var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+ var k=AUDIO[t];if(!k){tts();return}
+ var a=new Audio('audio/'+k+'.mp3');curA=a;a.playbackRate=.95;a.onerror=tts;var p=a.play();if(p&&p.catch)p.catch(tts)}catch(e){}}
 home();
 </script>
 </body>

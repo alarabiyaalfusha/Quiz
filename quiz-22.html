@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latihan Transportasi dan Taksi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one centered card on a deep green field, gold accents, answer buttons stacked on phones. */
+:root{
+  --green:#0f3d2a; --green-2:#165138; --gold:#f2c651; --cream:#fbf6e6; --ink:#10261b;
+  --ok:#2e9e4f; --no:#d63a3a;
+  --ar:'Noto Naskh Arabic','Amiri','Traditional Arabic',serif;
+  --ui:'Nunito',system-ui,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--green);color:var(--cream);font-family:var(--ui)}
+body{display:flex;justify-content:center;padding:20px 16px 40px}
+main{width:100%;max-width:760px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:.02em;color:var(--gold)}
+.score{font-weight:800;font-variant-numeric:tabular-nums}
+.bar{height:10px;border-radius:99px;background:var(--green-2);overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s}
+.card{background:var(--cream);color:var(--ink);border-radius:22px;padding:22px 18px;border:4px solid var(--gold)}
+.kind{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green-2);margin:0 0 10px}
+.q{display:flex;align-items:center;gap:14px;justify-content:center;margin:6px 0 4px}
+.ar{font-family:var(--ar);font-weight:700;direction:rtl;line-height:1.5}
+.q .ar{font-size:clamp(2.1rem,8vw,3.4rem);text-align:center}
+.hint{text-align:center;font-weight:800;font-size:1.1rem;margin:0 0 18px;color:var(--green-2)}
+.snd{flex:none;width:56px;height:56px;border-radius:50%;border:0;background:var(--green);color:var(--gold);font-size:1.5rem;cursor:pointer}
+.snd:focus-visible,.opt:focus-visible,.next:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{position:relative;border:4px solid var(--green);background:var(--gold);color:var(--ink);border-radius:18px;padding:14px 10px;cursor:pointer;min-height:84px;display:flex;align-items:center;justify-content:center}
+.opt .ar{font-size:1.9rem;text-align:center}
+.opt.lat{font-weight:800;font-size:1.15rem;text-align:center}
+.opt:hover:not(:disabled){transform:translateY(-2px)}
+.opt:disabled{cursor:default}
+.badge{position:absolute;top:-16px;inset-inline-end:-10px;width:44px;height:44px;border-radius:50%;border:3px solid #fff;color:#fff;font-size:1.4rem;font-weight:800;display:none;align-items:center;justify-content:center}
+.opt.ok .badge{display:flex;background:var(--ok)}
+.opt.no .badge{display:flex;background:var(--no)}
+.opt.reveal{border-color:var(--ok)}
+.fb{text-align:center;font-weight:800}
+.next{display:none;margin:14px auto 0;border:0;border-radius:99px;background:var(--green);color:var(--gold);font:800 1.05rem var(--ui);padding:12px 28px;cursor:pointer}
+.end{text-align:center}
+.end h2{margin:6px 0;font-size:1.6rem}
+.end .big{font-size:3rem;font-weight:800;font-variant-numeric:tabular-nums}
+.pic{width:190px;max-width:60%;margin:0 auto 6px;background:#fff;border:3px solid var(--gold);border-radius:18px;padding:6px}
+.pic svg{width:100%;height:auto;display:block}
+.chk{display:flex;gap:8px;justify-content:center;align-items:center;font-weight:800;margin:10px 0 4px}
+.fb{min-height:1.6em;margin:16px 0 0}
+.expl{margin-top:8px;font-weight:600;background:#fff;border-radius:14px;padding:10px 12px;border:2px solid var(--gold)}
+.expl .ar{font-size:1.6rem}
+.mini{border:0;border-radius:50%;width:34px;height:34px;background:var(--green);color:var(--gold);cursor:pointer;margin-inline-start:6px}
+.rev{list-style:none;padding:0;margin:0 0 6px;text-align:start;display:grid;gap:6px}
+.rev .ar{font-size:1.4rem}
+.emo{font-size:4.2rem;text-align:center;line-height:1.1;margin:0 0 6px}
+.bank,.ans{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;direction:rtl;min-height:62px;padding:10px;border-radius:16px}
+.ans{background:#fff;border:3px dashed var(--green);margin-bottom:12px}
+.tok{font-family:var(--ar);font-weight:700;font-size:1.6rem;border:3px solid var(--green);background:var(--gold);color:var(--ink);border-radius:14px;padding:6px 14px;cursor:pointer}
+.tok:disabled{opacity:.35}
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mt button{border:3px solid var(--green);background:var(--gold);color:var(--ink);border-radius:14px;padding:12px 8px;min-height:64px;cursor:pointer;font:800 1rem var(--ui)}
+.mt button.ar{font:700 1.5rem var(--ar)}
+.mt .sel{outline:4px solid var(--green)}
+.mt .done{background:var(--ok);color:#fff;border-color:var(--ok);cursor:default}
+.mt .bad{background:#f4b8b8;border-color:var(--no)}
+.note{font-size:.85rem;opacity:.8;text-align:center;margin-top:16px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
+</style>
+</head>
+<body>
+<main>
+  <header><a href="index.html#quizzes" class="back">← Menu · القائمة</a><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <section class="card" id="card" aria-live="polite"></section>
+  <p class="note">Tombol 🔊 membaca kalimat memakai suara perangkat; jika tidak ada suara Arab, tombol tidak berbunyi.</p>
+</main>
+<script>
+var T={mean:"Pilih arti · اختر المعنى",tr:"Pilih bentuk Arab · اختر العبارة",dl:"Jawab dialog · رد الحوار",fill:"Lengkapi kalimat · أكمل",listen:"Dengarkan · استمع",order:"Susun kalimat · رتب الكلمات",match:"Pasangkan · طابق",sit:"Situasi · الموقف"};
+function mc(n,kind,o){o.n=n;o.kind=kind;o.type='mc';return o}
+var DATA=[{"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "أَيْنَ مَوْقِفُ الْحَافِلَةِ؟", "hint": "Apa artinya?", "opts": ["Di mana halte bus?", "Saya butuh bensin.", "Kapan kereta berangkat?"], "arOpts": false, "full": "أَيْنَ مَوْقِفُ الْحَافِلَةِ؟", "id": "Di mana halte bus?", "n": 1}, {"type": "mc", "kind": "Dengarkan · استمع", "ar": "", "listen": "هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟", "emo": "🎧", "hint": "Tekan 🔊 lalu pilih yang kamu dengar.", "opts": ["هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟", "اُرْبُطِ الْحِزَامَ.", "السَّيَّارَةُ مُتَعَطِّلَةٌ."], "arOpts": true, "full": "هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟", "id": "Apakah bus ini menuju kota?", "n": 2}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "ar": "", "hint": "Saya mau tiket, tolong.", "opts": ["أُرِيدُ تَذْكِرَةً، مِنْ فَضْلِكَ.", "أَيْنَ سَيَّارَةُ الْأُجْرَةِ؟", "تَوَقَّفْ هُنَا، مِنْ فَضْلِكَ."], "arOpts": true, "full": "أُرِيدُ تَذْكِرَةً، مِنْ فَضْلِكَ.", "id": "Saya mau tiket, tolong.", "n": 3}, {"type": "mc", "kind": "Jawab dialog · رد الحوار", "hint": "Pilih jawaban yang tepat.", "ar": "أَيْنَ سَيَّارَةُ الْأُجْرَةِ؟", "opts": ["هُنَاكَ.", "نَعَمْ.", "هُوَ أَمَامَكَ."], "arOpts": true, "full": "هُنَاكَ.", "id": "Di sana.", "n": 4}, {"type": "order", "kind": "Susun kalimat · رتب الكلمات", "hint": "Tolong antar saya ke hotel.", "words": ["خُذْنِي", "إِلَى", "الْفُنْدُقِ،", "مِنْ", "فَضْلِكَ."], "full": "خُذْنِي إِلَى الْفُنْدُقِ، مِنْ فَضْلِكَ.", "id": "Tolong antar saya ke hotel.", "n": 5}, {"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "الْقِطَارُ سَرِيعٌ.", "hint": "Apa artinya?", "opts": ["Keretanya cepat.", "Di mana taksi?", "Jalan ini tertutup."], "arOpts": false, "full": "الْقِطَارُ سَرِيعٌ.", "id": "Keretanya cepat.", "n": 6}, {"type": "mc", "kind": "Jawab dialog · رد الحوار", "hint": "Pilih jawaban yang tepat.", "ar": "أَيْنَ شُبَّاكُ التَّذَاكِرِ؟", "opts": ["هُوَ أَمَامَكَ.", "نَعَمْ، أَعْرِفُهُ.", "حَسَنًا."], "arOpts": true, "full": "هُوَ أَمَامَكَ.", "id": "Ada di depanmu.", "n": 7}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "ar": "", "hint": "Tiket pulang-pergi, tolong.", "opts": ["تَذْكِرَةُ ذَهَابٍ وَإِيَابٍ، مِنْ فَضْلِكَ.", "كَمْ سِعْرُ التَّذْكِرَةِ؟", "هَذَا الطَّرِيقُ مَسْدُودٌ."], "arOpts": true, "full": "تَذْكِرَةُ ذَهَابٍ وَإِيَابٍ، مِنْ فَضْلِكَ.", "id": "Tiket pulang-pergi, tolong.", "n": 8}, {"type": "mc", "kind": "Dengarkan · استمع", "ar": "", "listen": "تَذْكِرَةٌ لِشَخْصٍ وَاحِدٍ.", "emo": "🎧", "hint": "Tekan 🔊 lalu pilih yang kamu dengar.", "opts": ["تَذْكِرَةٌ لِشَخْصٍ وَاحِدٍ.", "أَقُودُ السَّيَّارَةَ.", "تَذْكِرَةُ ذَهَابٍ وَإِيَابٍ، مِنْ فَضْلِكَ."], "arOpts": true, "full": "تَذْكِرَةٌ لِشَخْصٍ وَاحِدٍ.", "id": "Tiket untuk satu orang.", "n": 9}, {"type": "match", "kind": "Pasangkan · طابق", "hint": "Pasangkan kalimat dengan artinya.", "pairs": [["مَتَى يُغَادِرُ الْقِطَارُ؟", "Kapan kereta berangkat?"], ["هَذَا الطَّرِيقُ مَسْدُودٌ.", "Jalan ini tertutup."], ["السَّيَّارَةُ مُتَعَطِّلَةٌ.", "Mobilnya mogok."], ["أَنْزِلُ فِي الْمَحَطَّةِ الْقَادِمَةِ.", "Saya turun di stasiun berikutnya."]], "full": "مَتَى يُغَادِرُ الْقِطَارُ؟ — هَذَا الطَّرِيقُ مَسْدُودٌ. — السَّيَّارَةُ مُتَعَطِّلَةٌ. — أَنْزِلُ فِي الْمَحَطَّةِ الْقَادِمَةِ.", "id": "Kapan kereta berangkat? / Jalan ini tertutup. / Mobilnya mogok. / Saya turun di stasiun berikutnya.", "n": 10}, {"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "الْقِطَارُ مُتَأَخِّرٌ.", "hint": "Apa artinya?", "opts": ["Keretanya terlambat.", "Saya butuh bensin.", "Apakah bus ini menuju kota?"], "arOpts": false, "full": "الْقِطَارُ مُتَأَخِّرٌ.", "id": "Keretanya terlambat.", "n": 11}, {"type": "mc", "kind": "Dengarkan · استمع", "ar": "", "listen": "أَيْنَ سَيَّارَتُكَ؟", "emo": "🎧", "hint": "Tekan 🔊 lalu pilih yang kamu dengar.", "opts": ["أَيْنَ سَيَّارَتُكَ؟", "الرِّحْلَةُ طَوِيلَةٌ.", "هَذَا الطَّرِيقُ مُزْدَحِمٌ."], "arOpts": true, "full": "أَيْنَ سَيَّارَتُكَ؟", "id": "Di mana mobilmu?", "n": 12}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "ar": "", "hint": "Berapa harga tiketnya?", "opts": ["كَمْ سِعْرُ التَّذْكِرَةِ؟", "هَذَا الطَّرِيقُ مُزْدَحِمٌ.", "أَيْنَ مَحَطَّةُ الْمِتْرُو؟"], "arOpts": true, "full": "كَمْ سِعْرُ التَّذْكِرَةِ؟", "id": "Berapa harga tiketnya?", "n": 13}, {"type": "mc", "kind": "Jawab dialog · رد الحوار", "hint": "Pilih jawaban yang tepat.", "ar": "أَنْزِلُ فِي الْمَحَطَّةِ الْقَادِمَةِ.", "opts": ["حَسَنًا، أَنَا مَعَكَ.", "هُنَاكَ.", "هِيَ تَحْتَ الْجِسْرِ."], "arOpts": true, "full": "حَسَنًا، أَنَا مَعَكَ.", "id": "Baik, saya ikut.", "n": 14}, {"type": "order", "kind": "Susun kalimat · رتب الكلمات", "hint": "Jalan ini macet.", "words": ["هَذَا", "الطَّرِيقُ", "مُزْدَحِمٌ."], "full": "هَذَا الطَّرِيقُ مُزْدَحِمٌ.", "id": "Jalan ini macet.", "n": 15}, {"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "السَّيَّارَةُ مُتَعَطِّلَةٌ.", "hint": "Apa artinya?", "opts": ["Mobilnya mogok.", "Apakah kamu tahu jalannya?", "Keretanya terlambat."], "arOpts": false, "full": "السَّيَّارَةُ مُتَعَطِّلَةٌ.", "id": "Mobilnya mogok.", "n": 16}, {"type": "mc", "kind": "Jawab dialog · رد الحوار", "hint": "Pilih jawaban yang tepat.", "ar": "أَحْتَاجُ إِلَى بَنْزِينٍ.", "opts": ["هُنَاكَ مَحَطَّةٌ قَرِيبَةٌ.", "اِنْتَبِهْ.", "إِلَى أَيْنَ؟"], "arOpts": true, "full": "هُنَاكَ مَحَطَّةٌ قَرِيبَةٌ.", "id": "Ada pom bensin di dekat sini.", "n": 17}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "ar": "", "hint": "Di mana pom bensin?", "opts": ["أَيْنَ مَحَطَّةُ الْوَقُودِ؟", "أَرْكَبُ الدَّرَّاجَةَ.", "الرِّحْلَةُ طَوِيلَةٌ."], "arOpts": true, "full": "أَيْنَ مَحَطَّةُ الْوَقُودِ؟", "id": "Di mana pom bensin?", "n": 18}, {"type": "mc", "kind": "Dengarkan · استمع", "ar": "", "listen": "أَقُودُ السَّيَّارَةَ.", "emo": "🎧", "hint": "Tekan 🔊 lalu pilih yang kamu dengar.", "opts": ["أَقُودُ السَّيَّارَةَ.", "هَلْ تَعْرِفُ الطَّرِيقَ؟", "هَذَا الطَّرِيقُ مَسْدُودٌ."], "arOpts": true, "full": "أَقُودُ السَّيَّارَةَ.", "id": "Saya mengemudi mobil.", "n": 19}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "emo": "👩", "hint": "Pasang sabuk pengamannya. (untuk perempuan)", "opts": ["اُرْبُطِي الْحِزَامَ.", "اُرْبُطِ الْحِزَامَ.", "أُرِيدُ تَذْكِرَةً، مِنْ فَضْلِكَ."], "arOpts": true, "full": "اُرْبُطِي الْحِزَامَ.", "id": "Pasang sabuk pengamannya. (bentuk perempuan)", "n": 20}, {"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "هَلْ تَعْرِفُ الطَّرِيقَ؟", "hint": "Apa artinya?", "opts": ["Apakah kamu tahu jalannya?", "Di mana taksi?", "Tolong antar saya ke hotel."], "arOpts": false, "full": "هَلْ تَعْرِفُ الطَّرِيقَ؟", "id": "Apakah kamu tahu jalannya?", "n": 21}, {"type": "mc", "kind": "Dengarkan · استمع", "ar": "", "listen": "الْمَوْقِفُ مَمْلُوءٌ.", "emo": "🎧", "hint": "Tekan 🔊 lalu pilih yang kamu dengar.", "opts": ["الْمَوْقِفُ مَمْلُوءٌ.", "هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟", "مَتَى يُغَادِرُ الْقِطَارُ؟"], "arOpts": true, "full": "الْمَوْقِفُ مَمْلُوءٌ.", "id": "Tempat parkirnya penuh.", "n": 22}, {"type": "mc", "kind": "Pilih bentuk Arab · اختر العبارة", "ar": "", "hint": "Di mana saya parkir?", "opts": ["أَيْنَ أَرْكُنُ؟", "هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟", "تَذْكِرَةٌ لِشَخْصٍ وَاحِدٍ."], "arOpts": true, "full": "أَيْنَ أَرْكُنُ؟", "id": "Di mana saya parkir?", "n": 23}, {"type": "mc", "kind": "Jawab dialog · رد الحوار", "hint": "Pilih jawaban yang tepat.", "ar": "هَذَا الطَّرِيقُ مَسْدُودٌ.", "opts": ["إِذًا نَرْجِعُ.", "نَعَمْ، أُحِبُّ الْقِطَارَ.", "كَمْ يَتَأَخَّرُ؟"], "arOpts": true, "full": "إِذًا نَرْجِعُ.", "id": "Kalau begitu kita kembali.", "n": 24}, {"type": "mc", "kind": "Pilih arti · اختر المعنى", "ar": "الرِّحْلَةُ طَوِيلَةٌ.", "hint": "Apa artinya?", "opts": ["Perjalanannya panjang.", "Jalan ini macet.", "Pasang sabuk pengamannya."], "arOpts": false, "full": "الرِّحْلَةُ طَوِيلَةٌ.", "id": "Perjalanannya panjang.", "n": 25}];
+var card=document.getElementById('card'),shuffleQ=true,list,i,score,answered,wrong;
+function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t}return a}
+function speak(t){try{if(!window.speechSynthesis||!t)return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function setBar(v){document.getElementById('bar').style.width=(v/list.length*100)+'%'}
+function home(){
+  list=DATA;i=0;score=0;
+  document.getElementById('score').textContent='';document.getElementById('bar').style.width='0';
+  card.innerHTML='<div class="end"><p class="kind">Selamat datang · أهلًا بك</p><h2>Latihan: Transportasi dan Taksi</h2><p class="hint" style="margin-bottom:6px">المواصلات وسيارة الأجرة · 25 soal dengan beragam tipe: pilihan, dengar, susun kata, dan pasangkan.</p><label class="chk"><input type="checkbox" id="rnd" checked> Acak urutan soal</label><button class="next" id="go" style="display:block">Mulai · ابدأ</button></div>';
+  document.getElementById('go').onclick=function(){shuffleQ=document.getElementById('rnd').checked;begin(DATA)};
+}
+function begin(items){list=shuffleQ?shuffle(items):items.slice();i=0;score=0;wrong=[];show()}
+function head(q){return '<p class="kind">'+q.kind+' · '+(i+1)+'/'+list.length+'</p>'}
+function show(){
+  answered=false;var q=list[i];
+  setBar(i);document.getElementById('score').textContent=score+' / '+i;
+  if(q.type==='order')return showOrder(q);
+  if(q.type==='match')return showMatch(q);
+  var idx=shuffle(q.opts.map(function(_,k){return k}));
+  var h=head(q);
+  if(q.emo)h+='<div class="emo" aria-hidden="true">'+q.emo+'</div>';
+  if(q.ar||q.listen)h+='<div class="q"><button class="snd" id="snd" aria-label="Putar suara">🔊</button>'+(q.ar?'<span class="ar">'+q.ar+'</span>':'')+'</div>';
+  h+='<p class="hint">'+q.hint+'</p><div class="opts">';
+  idx.forEach(function(k){h+='<button class="opt'+(q.arOpts?'':' lat')+'" data-k="'+k+'"><span class="'+(q.arOpts?'ar':'')+'">'+q.opts[k]+'</span><span class="badge" aria-hidden="true"></span></button>'});
+  h+='</div><div class="fb" id="fb"></div><button class="next" id="next">Lanjut ←</button>';
+  card.innerHTML=h;
+  var sb=document.getElementById('snd');if(sb)sb.onclick=function(){speak(q.listen||q.ar)};
+  Array.prototype.forEach.call(card.querySelectorAll('.opt'),function(b){b.onclick=function(){pick(b,q)}});
+  document.getElementById('next').onclick=advance;
+}
+function advance(){i++;i<list.length?show():finish()}
+function result(q,right){
+  if(right)score++;else wrong.push(q);
+  var fb=document.getElementById('fb');
+  fb.innerHTML='<div style="color:'+(right?'#1f7a3c':'#b02a2a')+'">'+(right?'Benar! أحسنت':'Belum tepat.')+'</div><div class="expl"><span class="ar">'+q.full+'</span><br>'+q.id+' <button class="mini" id="snd2" aria-label="Putar suara">🔊</button></div>';
+  document.getElementById('snd2').onclick=function(){speak(q.full.split(' — ')[0])};
+  document.getElementById('score').textContent=score+' / '+(i+1);setBar(i+1);
+  var n=document.getElementById('next');n.style.display='block';n.textContent=(i+1<list.length)?'Lanjut ←':'Lihat hasil';n.focus();
+}
+function pick(b,q){
+  if(answered)return;answered=true;
+  var k=+b.getAttribute('data-k'),right=(k===q.ans||(q.ans===undefined&&k===0));
+  Array.prototype.forEach.call(card.querySelectorAll('.opt'),function(o){o.disabled=true;if(+o.getAttribute('data-k')===0&&!right)o.classList.add('reveal')});
+  b.classList.add(right?'ok':'no');b.querySelector('.badge').textContent=right?'✓':'✕';
+  result(q,right);
+}
+function showOrder(q){
+  var bank=shuffle(q.words.map(function(w,k){return {w:w,k:k}})),chosen=[];
+  var h=head(q)+'<div class="q"><button class="snd" id="snd" aria-label="Putar suara">🔊</button></div><p class="hint">'+q.hint+'</p><div class="ans" id="ans" aria-label="Jawabanmu"></div><div class="bank" id="bank"></div><div class="fb" id="fb"></div><button class="next" id="chk" style="display:block">Periksa · تحقق</button><button class="next" id="next">Lanjut ←</button>';
+  card.innerHTML=h;
+  document.getElementById('snd').onclick=function(){speak(q.full)};
+  function draw(){
+    var a=document.getElementById('ans'),b=document.getElementById('bank');a.innerHTML='';b.innerHTML='';
+    chosen.forEach(function(t,p){var e=document.createElement('button');e.className='tok';e.textContent=t.w;e.onclick=function(){if(answered)return;chosen.splice(p,1);bank.push(t);draw()};a.appendChild(e)});
+    bank.forEach(function(t,p){var e=document.createElement('button');e.className='tok';e.textContent=t.w;e.disabled=answered;e.onclick=function(){bank.splice(p,1);chosen.push(t);draw()};b.appendChild(e)});
+  }
+  draw();
+  document.getElementById('next').onclick=advance;
+  document.getElementById('chk').onclick=function(){
+    if(answered||chosen.length!==q.words.length)return;answered=true;
+    var right=chosen.every(function(t,p){return t.k===p});
+    document.getElementById('ans').style.borderColor=right?'#2e9e4f':'#d63a3a';
+    document.getElementById('chk').style.display='none';draw();result(q,right);
+  };
+}
+function showMatch(q){
+  var L=shuffle(q.pairs.map(function(p,k){return {t:p[0],k:k}})),R=shuffle(q.pairs.map(function(p,k){return {t:p[1],k:k}})),sel=null,left=q.pairs.length,mist=0;
+  var h=head(q)+'<p class="hint">'+q.hint+'</p><div class="mt"><div style="display:grid;gap:10px" id="cl"></div><div style="display:grid;gap:10px" id="cr"></div></div><div class="fb" id="fb"></div><button class="next" id="next">Lanjut ←</button>';
+  card.innerHTML=h;
+  document.getElementById('next').onclick=advance;
+  function mk(col,arr,isAr){arr.forEach(function(x){var b=document.createElement('button');b.textContent=x.t;if(isAr)b.className='ar';b.onclick=function(){
+      if(b.classList.contains('done'))return;
+      if(isAr){speak(x.t);Array.prototype.forEach.call(document.querySelectorAll('#cl button'),function(e){e.classList.remove('sel')});b.classList.add('sel');sel={k:x.k,b:b};return}
+      if(!sel)return;
+      if(sel.k===x.k){sel.b.classList.remove('sel');sel.b.classList.add('done');b.classList.add('done');sel=null;left--;
+        if(!left){answered=true;result(q,mist===0)}}
+      else{mist++;b.classList.add('bad');setTimeout(function(){b.classList.remove('bad')},500)}
+    };col.appendChild(b)})}
+  mk(document.getElementById('cl'),L,true);mk(document.getElementById('cr'),R,false);
+}
+function finish(){
+  var pct=Math.round(score/list.length*100);
+  var h='<div class="end"><p class="kind">Hasil · النتيجة</p><div class="big">'+score+' / '+list.length+'</div><h2>'+(pct>=80?'Mumtaz! ممتاز':pct>=50?'Bagus, terus berlatih':'Ayo coba lagi')+'</h2>';
+  if(wrong.length){h+='<p class="hint" style="margin:10px 0 6px">Perlu diulang:</p><ul class="rev">';wrong.forEach(function(q){h+='<li><span class="ar">'+q.full+'</span> — '+q.id+'</li>'});h+='</ul><button class="next" id="redo" style="display:block">Ulangi yang salah · أعد الأخطاء</button>'}
+  h+='<button class="next" id="again" style="display:block">Mulai dari awal · من البداية</button></div>';
+  card.innerHTML=h;var r=document.getElementById('redo');if(r)r.onclick=function(){begin(wrong.slice())};
+  document.getElementById('again').onclick=home;document.getElementById('bar').style.width='100%';
+}
+var AUDIO={"أَيْنَ مَوْقِفُ الْحَافِلَةِ؟": "210", "هُوَ عِنْدَ الْمَحَطَّةِ.": "210b", "هَلْ هَذِهِ الْحَافِلَةُ إِلَى الْمَدِينَةِ؟": "211", "نَعَمْ.": "211b", "أُرِيدُ تَذْكِرَةً، مِنْ فَضْلِكَ.": "212", "إِلَى أَيْنَ؟": "212b", "أَيْنَ سَيَّارَةُ الْأُجْرَةِ؟": "213", "هُنَاكَ.": "213b", "خُذْنِي إِلَى الْفُنْدُقِ، مِنْ فَضْلِكَ.": "214", "حَسَنًا.": "214b", "تَوَقَّفْ هُنَا، مِنْ فَضْلِكَ.": "215", "حَاضِرٌ.": "215b", "الْقِطَارُ سَرِيعٌ.": "216", "نَعَمْ، أُحِبُّ الْقِطَارَ.": "216b", "أَيْنَ شُبَّاكُ التَّذَاكِرِ؟": "436", "هُوَ أَمَامَكَ.": "436b", "تَذْكِرَةُ ذَهَابٍ وَإِيَابٍ، مِنْ فَضْلِكَ.": "437", "تَفَضَّلْ.": "437b", "تَذْكِرَةٌ لِشَخْصٍ وَاحِدٍ.": "438", "مَتَى يُغَادِرُ الْقِطَارُ؟": "439", "فِي السَّاعَةِ الثَّامِنَةِ.": "439b", "الْقِطَارُ مُتَأَخِّرٌ.": "440", "كَمْ يَتَأَخَّرُ؟": "440b", "أَيْنَ سَيَّارَتُكَ؟": "499", "أَيْنَ سَيَّارَتُكِ؟": "499f", "هِيَ فِي الْمَوْقِفِ.": "499b", "أَيْنَ مَحَطَّةُ الْمِتْرُو؟": "641", "هِيَ تَحْتَ الْجِسْرِ.": "641b", "كَمْ سِعْرُ التَّذْكِرَةِ؟": "642", "ثَلَاثَةُ دَرَاهِمَ.": "642b", "أَنْزِلُ فِي الْمَحَطَّةِ الْقَادِمَةِ.": "643", "حَسَنًا، أَنَا مَعَكَ.": "643b", "هَذَا الطَّرِيقُ مُزْدَحِمٌ.": "644", "لِنَأْخُذْ طَرِيقًا آخَرَ.": "644b", "السَّيَّارَةُ مُتَعَطِّلَةٌ.": "645", "سَأَتَّصِلُ بِالْوَرْشَةِ.": "645b", "أَحْتَاجُ إِلَى بَنْزِينٍ.": "646", "هُنَاكَ مَحَطَّةٌ قَرِيبَةٌ.": "646b", "أَيْنَ مَحَطَّةُ الْوَقُودِ؟": "647", "عَلَى الْيَسَارِ.": "647b", "أَقُودُ السَّيَّارَةَ.": "648", "اِنْتَبِهْ.": "648b", "اُرْبُطِ الْحِزَامَ.": "649", "اُرْبُطِي الْحِزَامَ.": "649f", "هَلْ تَعْرِفُ الطَّرِيقَ؟": "650", "هَلْ تَعْرِفِينَ الطَّرِيقَ؟": "650f", "نَعَمْ، أَعْرِفُهُ.": "650b", "أَرْكَبُ الدَّرَّاجَةَ.": "651", "كَيْفَ تَذْهَبُ؟": "651a", "الْمَوْقِفُ مَمْلُوءٌ.": "652", "أَيْنَ نَرْكُنُ؟": "652b", "أَيْنَ أَرْكُنُ؟": "653", "هَذَا الطَّرِيقُ مَسْدُودٌ.": "654", "إِذًا نَرْجِعُ.": "654b", "الرِّحْلَةُ طَوِيلَةٌ.": "655", "لَكِنَّهَا جَمِيلَةٌ.": "655b"},curA=null;
+function speak(t){try{if(curA){curA.pause();curA=null}if(window.speechSynthesis)speechSynthesis.cancel();if(!t)return;
+ function tts(){try{if(!window.speechSynthesis)return;var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+ var k=AUDIO[t];if(!k){tts();return}
+ var a=new Audio('audio/'+k+'.mp3');curA=a;a.playbackRate=.95;a.onerror=tts;var p=a.play();if(p&&p.catch)p.catch(tts)}catch(e){}}
+home();
+</script>
+</body>
+</html>

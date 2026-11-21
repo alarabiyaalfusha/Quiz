@@ -60,11 +60,13 @@ h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:.02em;color:var(--g
 .rev .ar{font-size:1.4rem}
 .note{font-size:.85rem;opacity:.8;text-align:center;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
+.back{color:var(--gold);font-weight:800;text-decoration:none;font-size:.9rem;border:2px solid var(--gold);border-radius:99px;padding:4px 12px}
 </style>
 </head>
 <body>
 <main>
-  <header><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
+  <header><a href="index.html#quizzes" class="back">← Menu · القائمة</a><h1>تدريب · Latihan</h1><div class="score" id="score">0 / 0</div></header>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <section class="card" id="card" aria-live="polite"></section>
   <p class="note">Tombol 🔊 membaca kalimat memakai suara perangkat; jika tidak ada suara Arab, tombol tidak berbunyi.</p>
@@ -209,6 +211,11 @@ function finish(){
   document.getElementById('again').onclick=home;
   document.getElementById('bar').style.width='100%';
 }
+var AUDIO={"هُوَ طَوِيلٌ.": "521", "كَيْفَ هُوَ؟": "521a", "هِيَ قَصِيرَةٌ.": "522", "كَيْفَ هِيَ؟": "522a", "أَخِي نَحِيفٌ.": "523", "وَأَنَا أَيْضًا.": "523b", "هُوَ قَوِيٌّ.": "524", "نَعَمْ، يَلْعَبُ الرِّيَاضَةَ.": "524b", "هِيَ جَمِيلَةٌ.": "525", "وَطَيِّبَةٌ أَيْضًا.": "525b", "أَبِي كَبِيرٌ فِي السِّنِّ.": "526", "أَطَالَ اللهُ عُمْرَهُ.": "526b", "هُوَ شَابٌّ.": "527", "كَمْ عُمْرُهُ؟": "527a", "هِيَ طَيِّبَةٌ وَلَطِيفَةٌ.": "528", "أَعْرِفُ ذَلِكَ.": "528b", "مُعَلِّمِي صَبُورٌ.": "529", "هَذَا مُهِمٌّ.": "529b", "صَدِيقِي ذَكِيٌّ.": "530", "مَا شَاءَ اللهُ.": "530b", "هُوَ كَسُولٌ.": "531", "لَا، هُوَ مُتْعَبٌ فَقَطْ.": "531b", "هُوَ مُجْتَهِدٌ.": "532", "نَعَمْ، يَدْرُسُ كُلَّ يَوْمٍ.": "532b", "شَعْرُهَا طَوِيلٌ.": "533", "وَجَمِيلٌ.": "533b", "عَيْنَاكِ جَمِيلَتَانِ.": "534", "شُكْرًا.": "534b", "هُوَ لَطِيفٌ.": "535b", "هَذَا رَأْسِي.": "536", "مَا هَذَا؟": "536a", "هَذِهِ يَدِي.": "537", "مَا هَذِهِ؟": "537a", "هَذِهِ رِجْلِي.": "538"},curA=null;
+function speak(t){try{if(curA){curA.pause();curA=null}if(window.speechSynthesis)speechSynthesis.cancel();if(!t)return;
+ function tts(){try{if(!window.speechSynthesis)return;var u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+ var k=AUDIO[t];if(!k){tts();return}
+ var a=new Audio('audio/'+k+'.mp3');curA=a;a.playbackRate=.95;a.onerror=tts;var p=a.play();if(p&&p.catch)p.catch(tts)}catch(e){}}
 home();
 </script>
 </body>
