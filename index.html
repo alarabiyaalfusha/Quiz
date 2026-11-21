@@ -80,9 +80,9 @@ button{font:inherit;cursor:pointer;border:0;background:none}
 .gi.on:hover{filter:brightness(1.15)}
 .gi .no{position:absolute;left:14px;top:13px;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--g);font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center}
 .gi svg.lk{position:absolute;left:16px;top:15px;width:40px;height:40px}
-.gi .tx{position:absolute;left:68px;width:332px;top:3px;line-height:1.1}
-.gi .ta{font-family:'Amiri',serif;direction:rtl;text-align:right;font-weight:700;font-size:25px;white-space:nowrap;overflow:hidden}
-.gi .ti{font-size:16.5px;font-weight:700;margin-top:3px;color:#dfe6e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gi .tx{position:absolute;left:68px;width:332px;top:0;height:100%;line-height:1.1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.gi .ta{font-family:'Amiri',serif;direction:rtl;text-align:center;font-weight:700;font-size:25px;white-space:nowrap;overflow:hidden;max-width:100%}
+.gi .ti{font-size:15.5px;font-weight:700;margin-top:3px;max-width:100%;text-align:center;color:#dfe6e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gi.on .ti{color:var(--gold)}
 /* hub */
 .hcard{position:absolute;top:330px;width:620px;height:520px;border-radius:56px;background:linear-gradient(#fffdf4,#f6e7ba);border:7px solid var(--gold);box-shadow:0 12px 0 rgba(5,43,24,.3),0 0 0 14px rgba(22,81,56,.92);text-align:center;color:var(--g);transition:transform .15s}
