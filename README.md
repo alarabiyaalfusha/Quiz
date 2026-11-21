@@ -14,3 +14,9 @@ NOMOR = nomor kalimat di slide (1–28, 257–… dst). Jika file tidak ada, oto
 
 ## GitHub Pages
 Unggah seluruh isi folder ke repo → Settings → Pages → Deploy from branch → `main` / root.
+
+## Membuat suara otomatis (gratis)
+1. Pasang Python, lalu jalankan: `pip install edge-tts`
+2. Letakkan `make_audio.py` dan `audio_list.csv` di folder yang sama dengan `index.html`
+3. Jalankan: `python make_audio.py` → folder `audio/` terisi 256 file mp3
+4. Unggah folder `audio/` ke GitHub.
